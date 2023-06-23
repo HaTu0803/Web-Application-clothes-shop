@@ -5,12 +5,16 @@ html {
     font-size: 62.5%;
 }
 body{
-    background-color: #dedee0;
+    background-color: #A76F6F;
     font-family: 'Quicksand', sans-serif;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .wrapper{
-  width: 98%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -33,11 +37,12 @@ a {
 
 
 .header{
-    position: relative;
-    width:95%;
+    position: fixed;
+    width: 100%;
     z-index: 10;
     background-color: #fff7f4 ;
     margin: 0 auto;
+    border: 1px solid black;
 }
 
 
@@ -77,6 +82,7 @@ a {
 
 .menu-text:hover {
   border-top: 1px solid darkcyan;
+  border-bottom: 1px solid brown;
   color: darkcyan;
 }
 
@@ -86,6 +92,12 @@ a {
   margin-left: 30px;
 }
 
+.menu-icon:hover {
+
+  color: darkcyan;
+  border: none;
+
+}
 
 
 .header li {

@@ -4,6 +4,7 @@
     border: 1px solid #ccc;
     margin-bottom: 50px;
     transition: 0.3s;
+    border-radius: 15px;
   }
   
   
@@ -22,6 +23,7 @@
     margin-top: 30px;
     text-decoration: none;
     padding: 10px 5px;
+    border-radius: 15px;
   }
   
   .card-detail .btn {
