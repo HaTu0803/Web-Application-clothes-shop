@@ -229,7 +229,7 @@ body.dark {
 
 .sidebar_bottom
 {
-   margin-top: 90%;
+   margin-top: 60%;
 }
 @media screen and (max-width: 768px) {
   #sidebarOpen {
