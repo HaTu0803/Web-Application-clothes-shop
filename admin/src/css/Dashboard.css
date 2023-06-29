@@ -1,0 +1,57 @@
+
+.BarChart1
+{
+    position: relative;
+    margin-top: 100px;
+    margin-left: 300px;
+    display: inline-block;
+    background-color: white;
+    width: 500px;
+    border-radius: 10px;
+    border: 1px solid #E7E7E7;
+    
+}
+
+
+.BarChart2
+{
+    position: absolute;
+    display: inline-block;
+    margin-top: 100px;
+    margin-left: 100px;
+    background-color: white;
+    width: 500px;
+    border-radius: 10px;
+    border: 1px solid #E7E7E7;
+}
+
+
+.BarChart3
+{
+    position: relative;
+    margin-top: 50px;
+    margin-left: 300px;
+    background-color: white;
+    width: 1100px;
+    border-radius: 10px;
+    border: 1px solid #E7E7E7;
+}
+
+.Chart-title
+
+{
+    background-color: #E7E7E7;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.Chart-content
+
+{
+color: #000;
+font-size: 26px;
+font-family: Poppins;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+}
