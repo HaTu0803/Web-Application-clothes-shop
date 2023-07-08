@@ -3,8 +3,8 @@ import { useState } from "react";
 import BarChart from "./BarChart";
 import { UserData } from "../Data";
 import { UserData1 } from "../Datamonth";
-import Sidebar from "./Sidebar";
 import "../css/Dashboard.css";
+
 
 const Dashboard = () => {
 
@@ -63,7 +63,7 @@ const Dashboard = () => {
             return (
               <div id = "App">
               
-            <Sidebar />
+          
             <div className = "BarChart1">
             <div className = "Chart-title"><p className = "Chart-content">Doanh Thu Hôm Qua</p></div>
             <BarChart chartData={userData1} />
