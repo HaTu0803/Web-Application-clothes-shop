@@ -1,0 +1,22 @@
+.card-container {
+    display: flex;
+    margin-left: 300px;
+    flex-wrap: wrap;
+}
+
+.add-button
+{
+    margin-top: 100px;
+    margin-left: 81.5%;
+    width: 120px;
+    height: 40px;
+    background-color: #FFB9A4;
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-button:hover {
+    background-color: antiquewhite;
+}
