@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import profile from '../images/profile.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -18,6 +20,8 @@ import {
 import '../css/Sidebar.css';
 
 const Sidebar = () => {
+  
+  
   useEffect(() => {
     const handleSidebarOpen = () => {
       const sidebar = document.querySelector('.sidebar');
@@ -120,31 +124,32 @@ const Sidebar = () => {
       <nav className="sidebar">
         <div className="menu_content">
           <ul className="menu_items">
-            <li className="item">
-              <div className="nav_link">
+          <li className="item">
+          <Link to="/" className="nav_link">
                 <span className="navlink_icon">
-                  <FontAwesomeIcon icon={faTachometerAlt} />
-                </span>
-                <span className="navlink">Dashboard</span>
-              </div>
+                    <FontAwesomeIcon icon={faTachometerAlt} />
+                  </span>
+                  <span className="navlink">Dashboard</span>
+                </Link>
             </li>
 
             <li className="item">
-              <div className="nav_link">
+            <Link to="/mainproducts" className="nav_link">
                 <span className="navlink_icon">
-                  <FontAwesomeIcon icon={faCartShopping} />
-                </span>
-                <span className="navlink">Products</span>
-              </div>
+                    <FontAwesomeIcon icon={faCartShopping} />
+                  </span>
+                  <span className="navlink">Products</span>
+                </Link>
             </li>
 
+
             <li className="item">
-              <div className="nav_link">
+            <Link to="/addproducts" className="nav_link">
                 <span className="navlink_icon">
                   <FontAwesomeIcon icon={faCartPlus} />
                 </span>
                 <span className="navlink">Add Products</span>
-              </div>
+              </Link>
             </li>
 
             <li className="item">

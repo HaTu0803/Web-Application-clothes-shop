@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState } from "react";
-import BarChart from "./BarChart";
-import { UserData } from "../Data";
-import { UserData1 } from "../Datamonth";
-import Sidebar from "./Sidebar";
-import "../css/Dashboard.css";
+import BarChart from "../BarChart";
+import { UserData } from "../../Data";
+import { UserData1 } from "../../Datamonth";
+import Sidebar from "./../Sidebar";
+import "./../../css/Dashboard.css";
 
 const Dashboard = () => {
 
