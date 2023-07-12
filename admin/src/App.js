@@ -2,6 +2,7 @@ import './App.css';
 import HomeScreen from './screens/HomeScreen';
 import MainProductScreen from './screens/MainProductScreen';
 import AddProductScreen from './screens/AddProductScreen';
+import CategoriesScreen from './screens/CategoriesScreen';
 
 import React from 'react';
 import {
@@ -16,6 +17,8 @@ const App = () => {
       <Route path="/" element={<HomeScreen />} />
       <Route path="/mainproducts" element={<MainProductScreen />} />
       <Route path="/addproducts" element={<AddProductScreen />} />
+      <Route path="/categories" element={<CategoriesScreen />} />
+
       </Routes>
     </Router>
     

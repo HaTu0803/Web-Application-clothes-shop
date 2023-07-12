@@ -1,6 +1,7 @@
 const products = [
     {
       _id: "1",
+      category: "Jean",
       name: "Velcro Ballerinas For Girls  (Pink)",
       image: "./../images/profile.jpg",
       description:
@@ -12,6 +13,8 @@ const products = [
     },
     {
       _id: "2",
+      category: "Jean",
+
       name: "Velcro Sneakers For Boys & Girls  (Blue)",
       image: "./../images/profile.jpg",
       description:
@@ -23,6 +26,8 @@ const products = [
     },
     {
       _id: "3",
+      category: "Jean",
+
       name: "Sesame Street Unisex-Child ELMO Puppet Slipper",
       image: "./../images/profile.jpg",
       description:
@@ -34,6 +39,8 @@ const products = [
     },
     {
       _id: "4",
+      category: "Jupe",
+
       name: "Lace Casual Boots For Boys & Girls  (Tan)",
       image: "./../images/profile.jpg",
       description:
@@ -45,6 +52,8 @@ const products = [
     },
     {
       _id: "5",
+      category: "Jupe",
+
       name: "Lace Walking Shoes For Boys & Girls  (Pink)",
       image: "./../images/profile.jpg",
       description:
@@ -56,6 +65,8 @@ const products = [
     },
     {
       _id: "6",
+      category: "Jupe",
+
       name: "Women Red Heels Sandal",
       image: "./../images/profile.jpg",
       description:

@@ -153,21 +153,21 @@ const Sidebar = () => {
             </li>
 
             <li className="item">
-              <div className="nav_link">
+            <Link to="/categories" className="nav_link">
                 <span className="navlink_icon">
                   <FontAwesomeIcon icon={faListAlt} />
                 </span>
                 <span className="navlink">Categories</span>
-              </div>
+              </Link>
             </li>
 
             <li className="item">
-              <div className="nav_link">
+            <Link to="/categories" className="nav_link">
                 <span className="navlink_icon">
                   <FontAwesomeIcon icon={faShippingFast} />
                 </span>
                 <span className="navlink">Orders</span>
-              </div>
+              </Link>
             </li>
 
             <li className="item">
