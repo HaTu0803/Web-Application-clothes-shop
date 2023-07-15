@@ -24,6 +24,7 @@ function App() {
     <SideContent />
     <Sales />
     <Footer />
+
   </div>
 
   )
