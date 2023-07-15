@@ -1,0 +1,102 @@
+.wrapper {
+  position: relative;
+  top: 75px;
+  margin: 20px;
+  width: 100%;
+  background-color: #fff7f4;
+}
+
+.sort {
+  position: relative;
+  top: 50px;
+  margin-bottom: 10px;
+}
+
+.info-home {
+  margin: 20px;
+  width: 100%;
+  font-size: 30px;
+  background-color: #fff7f4;
+}
+
+.info-home .icon-home {
+  color: black;
+}
+
+.sort select {
+  position: relative;
+  left: 20px;
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ffbfa8;
+  cursor: pointer;
+}
+
+
+.row {
+  position: relative;
+  top: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 200px;
+}
+
+.pagination {
+  position: relative;
+  top: -75px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 0;
+  width: 30px; 
+  height: 30px; 
+  border-radius: 50%; 
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination button:focus {
+  outline: none;
+  background-color: #ee4266;
+}
+
+.pagination button:hover {
+  background-color: #ddd;
+}
+
+
+.pagination1 {
+  display: flex;
+  justify-content: flex-end;
+  transform: translateX(-50px);
+}
+
+.pagination1 button {
+  margin: 0 5px;
+  padding: 0;
+  width: 30px; 
+  height: 30px; 
+  border-radius: 50%; 
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination1 button:focus {
+  outline: none;
+  background-color: #ee4266;
+}
+
+.pagination1 button:hover {
+  background-color: #ddd;
+}
+
