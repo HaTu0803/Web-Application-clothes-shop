@@ -80,7 +80,7 @@ const NewProduct = () => {
                 </div>
                 <div className="row">
                     {currentProducts.map((item, index) => (
-                        <Card key={index} image={item.img} nameProduct={item.nameProduct} price={item.price}></Card>
+                        <Card className="card" key={index} image={item.img} nameProduct={item.nameProduct} price={item.price}></Card>
                     ))}
                 </div>
                 <div className="pagination">

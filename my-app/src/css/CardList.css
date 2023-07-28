@@ -2,18 +2,3 @@
   width: 100%;
   overflow: hidden;
 }
-
-.custom-slider {
-  display: flex !important;
-  width: fit-content !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.custom-card {
-  flex: 0 0 auto !important;
-  width: 25% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box;
-}
