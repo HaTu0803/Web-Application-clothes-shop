@@ -30,6 +30,7 @@ function MainProduct() {
       <input placeholder="Search" type="search" className="input"></input>
     </div>
     <div className="MainProduct-container">
+
         <div id="product">
           {products.map((data) => (
             <div className='card' key={data.ProductID}>
@@ -41,11 +42,21 @@ function MainProduct() {
                   {data.ProductName}
                 </h3>
                 <span>${data.Price}</span>
-                <Link to={`/products/${data.ProductID}`}>
-                <EditOutlined />
-        </Link>
-                <DeleteOutlined />
-              </div>
+                
+                  </div>
+                  <div className="icon-wrapper">
+  <div className="column">
+    <Link to={`/products/${data.ProductID}`} className="edit-link">
+      <EditOutlined className="edit-icon" />
+    </Link>
+  </div>
+  <div className="column">
+    <Link to={`/products/${data.ProductID}`} className="edit-link">
+      <DeleteOutlined className="delete-icon" />
+    </Link>
+  </div>
+</div>
+
             </div>
           ))}
         </div>

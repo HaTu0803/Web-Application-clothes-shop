@@ -87,18 +87,32 @@ input:hover {
   height: 1rem;
 }
 
-.edit-link {
-  text-decoration: none;
-  color: #1890ff; /* Change this color to your desired color */
-  display: inline-block;
-  margin-right: 10px; /* Add some spacing between the link and delete icon */
+/* Styles for Edit and Delete Icons */
+/* Styles for Edit and Delete Icons */
+.icon-wrapper {
+  display: flex;
+  justify-content: space-between; /* Chia thành hai cột và đặt chúng cách đều */
+  align-items: center; /* Căn chỉnh biểu tượng giữa mỗi cột */
+  margin-top: 10px;
 }
 
-.edit-icon {
-  margin-right: 5px; /* Add spacing between the icon and the text */
+.column {
+  flex: 1; /* Chiếm một phần bằng nhau của không gian */
+  display: flex;
+  justify-content: center; /* Đặt biểu tượng giữa cột */
 }
 
+.edit-icon,
 .delete-icon {
-  color: #ff4d4f; /* Change this color to your desired color */
-  margin-left: 5px; /* Add spacing between the delete icon and other content */
+  font-size: 16px;
+  transition: transform 0.2s; /* Thời gian hoàn thành chuyển đổi */
+  color: gray;
+  /* Các thuộc tính khác để tùy chỉnh biểu tượng */
+}
+
+
+.edit-icon:hover,
+.delete-icon:hover {
+  transform: translateY(-3px); /* Di chuyển lên 3px khi hover */
+  color: black; /* Có thể thay đổi màu sắc khác nếu cần */
 }
