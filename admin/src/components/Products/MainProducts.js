@@ -41,6 +41,10 @@ function MainProduct() {
                   {data.ProductName}
                 </h3>
                 <span>${data.Price}</span>
+                <Link to={`/products/${data.ProductID}`}>
+                <EditOutlined />
+        </Link>
+                <DeleteOutlined />
               </div>
             </div>
           ))}
