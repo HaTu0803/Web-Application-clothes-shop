@@ -134,7 +134,7 @@ const Sidebar = () => {
             </li>
 
             <li className="item">
-            <Link to="/mainproducts" className="nav_link">
+            <Link to="/products" className="nav_link">
                 <span className="navlink_icon">
                     <FontAwesomeIcon icon={faCartShopping} />
                   </span>
