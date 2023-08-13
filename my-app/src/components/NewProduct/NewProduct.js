@@ -16,6 +16,12 @@ const NewProduct = () => {
     const [selectedPage, setSelectedPage] = useState(1);
 
     useEffect(() => {
+        axios.get('http://localhost:3000/api/newproducts/')         //get data from api
+            .then(res => setProducts(res.data))
+            .catch(err => console.log(err));
+    }, []);
+
+    useEffect(() => {
         sortProductData();
     }, [sortOption]);
 
@@ -56,31 +62,31 @@ const NewProduct = () => {
             <Header />
             <div className="wrapper">
                 <div className="sort">
-                    <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome}/></Link>/Hàng Mới</p>
-                    
+                    <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/Hàng Mới</p>
+
                     <select id="operators" onChange={handleSortChange} value={sortOption}>
                         <option value="tangdan">Giá tăng dần</option>
                         <option value="giamdan">Giá giảm dần</option>
                     </select>
 
                     <div className="pagination1">
-                    {pageNumbers.map((number) => (
-                        <button
-                            key={number}
-                            onClick={() => paginate(number)}
-                            style={{
-                                backgroundColor: selectedPage === number ? '#ee4266' : '#eee',
-                            }}
-                        >
-                            {number}
-                        </button>
-                    ))}
-                </div>
+                        {pageNumbers.map((number) => (
+                            <button
+                                key={number}
+                                onClick={() => paginate(number)}
+                                style={{
+                                    backgroundColor: selectedPage === number ? '#ee4266' : '#eee',
+                                }}
+                            >
+                                {number}
+                            </button>
+                        ))}
+                    </div>
 
                 </div>
                 <div className="row">
-                    {currentProducts.map((item, index) => (
-                        <Card className="card" key={index} image={item.img} nameProduct={item.nameProduct} price={item.price}></Card>
+                    {currentProducts.map((data) => (
+                        <Card className='card' key={data.ProductID} image = {data.Photo} nameProduct = {data.ProductName} price = {data.Price}></Card>
                     ))}
                 </div>
                 <div className="pagination">
