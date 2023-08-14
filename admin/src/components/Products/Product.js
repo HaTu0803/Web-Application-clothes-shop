@@ -60,7 +60,7 @@ function Product() {
     <div className="right-column">
 
     <div className="sort-dropdown">
-          <label htmlFor="sort">Sort by:</label>
+          <label htmlFor="sort">Sắp xếp theo </label>
           <select id="sort" value={sortBy} onChange={handleSortChange}>
             <option value="">Tùy chọn</option>
             <option value="highest">Giá cao nhất</option>
