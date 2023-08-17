@@ -8,6 +8,7 @@ import CardDetail from './components/CardDetail';
 import SideContent from './components/SideContent';
 import Sales from './components/Sales';
 import Footer from './components/Footer';
+import Login from './components/Login';
 
 
 
@@ -16,15 +17,7 @@ function App() {
   return (
 
   <div className = "wrapper">
-    <Header />
-    <Slide />
-    <Service />
-    <CardList></CardList>
-    <CardDetail />
-    <SideContent />
-    <Sales />
-    <Footer />
-
+    <Login/>
   </div>
 
   )
