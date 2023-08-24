@@ -1,6 +1,6 @@
 import React from 'react';
-import "../css/Login.css";
-import Collection from "../Images/collections.png";
+import "../css/Register.css";
+
 
 
 

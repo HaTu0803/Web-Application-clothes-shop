@@ -9,6 +9,7 @@ import SideContent from './components/SideContent';
 import Sales from './components/Sales';
 import Footer from './components/Footer';
 import Login from './components/Login';
+import Register from './components/Regisgter';
 
 
 
@@ -17,7 +18,7 @@ function App() {
   return (
 
   <div className = "wrapper">
-    <Login/>
+    <Register/>
   </div>
 
   )
