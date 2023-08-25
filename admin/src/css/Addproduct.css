@@ -21,13 +21,14 @@
     display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 800px;
+  width: 1000px;
 
   
 }
 
 .left-container {
-    margin: 15px;
+    margin: 150px;
     width: 50%;
     flex-shrink: 1;
 

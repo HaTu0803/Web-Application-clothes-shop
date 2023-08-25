@@ -13,6 +13,7 @@ function Product() {
   const [products, setProducts] = useState([]);
   const [sortBy, setSortBy] = useState(null);
   const [query, setQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const handleSortChange = (event) => {
     setSortBy(event.target.value);
@@ -20,6 +21,35 @@ function Product() {
 
   const handleSearchChange = (event) => {
     setQuery(event.target.value);
+  };
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [productIdToDelete, setProductIdToDelete] = useState(null); // Store the product ID to delete
+
+  const handleDeleteClick = (id) => {
+    setProductIdToDelete(id); // Set the product ID to delete
+    setIsModalOpen(true);
+  };
+
+  const handleConfirmDelete = () => {
+    axios
+      .delete(`http://localhost:3000/api/products/${ProductID}`)
+      .then((res) => {
+        setIsModalOpen(false); // Close the modal
+        window.location.reload(); // Reload the page after deletion
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleCancelDelete = () => {
+    setIsModalOpen(false); // Close the modal
+    setProductIdToDelete(null); // Clear the product ID
   };
 
   const sortedProducts = [...products];
@@ -31,10 +61,11 @@ function Product() {
 
   const filteredProducts = sortedProducts.filter(
     (item) =>
-      item.ProductName.toLowerCase().includes(query.toLowerCase()) ||
-      item.CategoryID.toLowerCase().includes(query.toLowerCase())
+      (item.ProductName.toLowerCase().includes(query.toLowerCase()) ||
+        item.CategoryID.toLowerCase().includes(query.toLowerCase())) &&
+      (selectedCategory === '' || item.CategoryID === selectedCategory)
   );
-
+  
   useEffect(() => {
     axios
       .get('http://localhost:3000/api/products/')
@@ -79,6 +110,17 @@ function Product() {
               <option value='lowest'>Giá thấp nhất</option>
             </select>
           </div>
+          {/* <div>
+            <select
+              id='category'
+              value={selectedCategory}
+              onChange={handleCategoryChange}
+            >
+              {}
+              <option value=''>Tất cả danh mục</option>
+             
+            </select>
+          </div> */}
         </div>
         <div className='create-button'>
         <Link to={`/addproduct`}>
@@ -104,20 +146,22 @@ function Product() {
               <div className='icon-wrapper'>
                 <div className='column'>
                   <Link
-                    to={`/edit/${data.ProductID}`}
+                    to={`/editproduct/${data.ProductID}`}
                     className='edit-link'
                   >
                     <EditOutlined className='edit-icon' />
                   </Link>
                 </div>
-                <div className='column'>
-                  <Link
-                    to={`/products/${data.ProductID}`}
-                    className='edit-link'
-                  >
+                <div className='column' onClick={handleDeleteClick(data.ProductID)}>
                     <DeleteOutlined className='delete-icon' />
-                  </Link>
                 </div>
+                <Modal isOpen={isModalOpen}>
+        <div>
+          <p>Are you sure you want to delete?</p>
+          <button onClick={handleConfirmDelete}>OK</button>
+          <button onClick={handleCancelDelete}>Cancel</button>
+        </div>
+      </Modal>
               </div>
             </div>
           ))}

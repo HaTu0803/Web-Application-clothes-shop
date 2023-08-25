@@ -41,6 +41,14 @@
 .card h3 {
   text-transform: uppercase;
   margin: 10px 0;
+  font-size: 12px;
+  font-style: Serif;
+}
+.card span {
+
+  margin: 20px 0;
+  font-size: 14px;
+  font-style: Serif;
 }
 /* -----------------SEARCH-------------------------- */
 .Header-container{
@@ -122,9 +130,10 @@ input:hover {
 /* Styles for Edit and Delete Icons */
 .icon-wrapper {
   display: flex;
-  justify-content: space-between; /* Chia thành hai cột và đặt chúng cách đều */
-  align-items: center; /* Căn chỉnh biểu tượng giữa mỗi cột */
-  margin-top: 10px;
+  justify-content: space-between;
+  align-items: flex-end; /* Align icons to the bottom */
+  margin-top: auto; /* Push icons to the bottom of the card */
+  margin-bottom: 10px; /* Apply a fixed margin of 10px */
 }
 
 .column {
@@ -132,13 +141,12 @@ input:hover {
   display: flex;
   justify-content: center; /* Đặt biểu tượng giữa cột */
 }
-
 .edit-icon,
 .delete-icon {
   font-size: 16px;
-  transition: transform 0.2s; /* Thời gian hoàn thành chuyển đổi */
+  transition: transform 0.2s;
   color: gray;
-  /* Các thuộc tính khác để tùy chỉnh biểu tượng */
+  margin-bottom: 10px; /* Apply a fixed margin of 10px to the icons */
 }
 
 

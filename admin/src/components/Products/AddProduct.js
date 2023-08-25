@@ -1,101 +1,163 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "../../css/Addproduct.css";
-
+import axios from 'axios';
 const AddProduct = () => {
-  const [productName, setProductName] = useState("");
-  const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
+  const [product, setProduct] = useState({
+    ProductName: '',
+    Descrip: '',
+    Photo: '',
+    CategoryID: '',
+    productDetails: [],
+  });
+
+  const [productDetails, setProductDetails] = useState({
+    SizeID: '',
+    ColorID: '',
+    Quantity: '',
+    Price: '',
+  });
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [categories, setCategories] = useState([]); // State for categories
 
   const handleBack = () => {
     // Handle logic when clicking the "Back to Products" button
   };
 
-  const handlePublish = () => {
-    // Handle logic when clicking the "Publish" button
-    // Send the product data to the server or perform other actions
-  };
+  
+  // const handleProductChange = (e) => {
+  //   const { ProductName,Descrip, , value } = e.target;
+  //   setProduct((prevProduct) => ({
+  //     ...prevProduct,
+  //     [name]: value,
+  //   }));
+  // };
 
-  const handlePriceChange = (event) => {
-    const priceValue = event.target.value;
-    if (priceValue >= 0) {
-      setPrice(priceValue);
-    }
-  };
+  // const handleProductDetailsChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setProductDetails((prevDetails) => ({
+  //     ...prevDetails,
+  //     [name]: value,
+  //   }));
+  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post('http://localhost:3000/api/addproducts/',product,productDetails)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => console.log(err));
+};
 
-  const handleQuantityChange = (event) => {
-    const quantityValue = event.target.value;
-    if (quantityValue >= 0) {
-      setQuantity(quantityValue);
-    }
-  };
+  useEffect(()=>{
+    axios.post('http://localhost:3000/api/addproducts/')
+    .then((res) => {
+      setProduct(res.data);
+      setProductDetails(res.data);
+    })
+    .catch((err) => console.log(err));
+}, []);
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    // Handle image upload logic
-    setImage(file);
-  };
-
+ 
   return (
     <div className="Categories-container">
-      <div className="left-container">
-        <div className="category_bar">
-          <p>Tên danh mục</p>
-          <select className="category_select">
-            <option value="">Chọn danh mục</option>
-            <option value="category1">Danh mục 1</option>
-            <option value="category2">Danh mục 2</option>
-            <option value="category3">Danh mục 3</option>
-          </select>
-        </div>
-        <div className="product_bar">
-          <p>Tên sản phẩm</p>
-          <input
-            type="text"
-            className="input1"
-            placeholder="Nhập tên sản phẩm"
-          />
-        </div>
-        <div className="price_bar">
-          <p>Giá</p>
-          <input
-            type="number"
-            className="input1"
-            placeholder="Nhập giá"
-            value={price}
-            onChange={handlePriceChange}
-          />
-        </div>
-        <div className="quantity_bar">
-          <p>Số lượng</p>
-          <input
-            type="number"
-            className="input1"
-            placeholder="Nhập số lượng"
-            value={quantity}
-            onChange={handleQuantityChange}
-          />
-        </div>
-        <div className="des_bar">
-          <p>Mô tả</p>
-          <textarea placeholder="Nhập mô tả"></textarea>
-        </div>
-        <div className="image_bar">
-          <p>Ảnh</p>
-          <input
-            type="file"
-            id="img"
-            name="img"
-            className="input2"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-        </div>
-        <div className="filter-button">Tạo mới</div>
-      </div>
+  <form className="left-container" onSubmit={handleSubmit}>
+    <div className="category_bar">
+      <label htmlFor="category">Tên danh mục</label>
+      <select
+        id="category"
+        className="category_select"
+        value={selectedCategory}
+        onChange={(e) => setSelectedCategory(e.target.value)}
+      >
+         <option value="">Chọn danh mục</option>
+            {categories.map(category => (
+              <option key={category.CategoryID} value={category.CategoryID}>
+                {category.CategoryID}
+              </option>
+            ))}
+      </select>
     </div>
-  );
+    <div className="product_bar">
+      <label htmlFor="productName">Tên sản phẩm</label>
+      <input
+        id="productName"
+        className="input1"
+        placeholder="Nhập tên sản phẩm"
+        value={product.ProductName}
+        onChange={e => setProduct({...product, ProductName: e.target.value})}
+      />
+    </div>
+    <div className="price_bar">
+      <label htmlFor="price">Giá</label>
+      <input
+            type = "number"
+            min="0"
+            step="1" 
+        id="price"
+        className="input1"
+        placeholder="Nhập giá"
+        value={productDetails.Price}
+        onChange={e => setProductDetails({...productDetails, Price: e.target.value})}
+      />
+    </div>
+    <div className="quantity_bar">
+      <label htmlFor="quantity">Số lượng</label>
+      <input
+      type = "number"
+      min="0"
+      step="1" 
+        id="quantity"
+        className="input1"
+        placeholder="Nhập số lượng"
+        value={productDetails.Quantity}
+        onChange={e => setProductDetails({...productDetails, Quantity: e.target.value})}
+      />
+    </div>
+    <div className="color_bar">
+      <label htmlFor="color">Màu</label>
+      <input
+        id="color"
+        className="input1"
+        placeholder="Nhập số lượng"
+        value={productDetails.ColorID}
+        onChange={e => setProductDetails({...productDetails, ColorID: e.target.value})}
+      />
+    </div>
+    <div className="size_bar">
+      <label htmlFor="size">Size</label>
+      <input
+        id="size"
+        className="input1"
+        placeholder="Nhập size"
+        value={productDetails.SizeID}
+        onChange={e => setProductDetails({...productDetails, SizeID: e.target.value})}
+      />
+    </div>
+    <div className="des_bar">
+      <label htmlFor="description">Mô tả</label>
+      <textarea
+        id="description"
+        placeholder="Nhập mô tả"
+        value={product.Descrip}
+        onChange={e => setProduct({...product, Descrip: e.target.value})}
+      ></textarea>
+    </div>
+    <div className="image_bar">
+      <label htmlFor="img">Ảnh</label>
+      <input
+        id="img"
+        className="input1"
+        placeholder="Nhập anh"
+        value={product.Photo}
+        onChange={e => setProduct({...product, Photo: e.target.value})}
+      />
+    </div>
+    <button type="submit" className="filter-button">
+      Tạo mới
+    </button>
+  </form>
+</div>
+  )
 };
 
 export default AddProduct;

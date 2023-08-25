@@ -27,11 +27,12 @@ router.get('/products/:id', async (req, res) => {
 
 });
 //-------------------NEWPRODUCTS-------------------------------
-router.get('/newproducts', async (req, res) => {
+router.post('/addproducts', async (req, res) => {
     try {
-        const products = await productService.AllProducts();
+        const product = req.body;
+        const result = await productService.AddProduct(product);
         
-        return res.json(products.recordsets[0]);
+        res.json(result);
     } catch (error) {
         console.log(error)
         res.status(500).json({ error: 'Internal Server Error' });
@@ -40,7 +41,7 @@ router.get('/newproducts', async (req, res) => {
 });
 
 
-router.get('/newproducts/:id', async (req, res) => {
+router.get('/addproducts/:id', async (req, res) => {
     const id = req.params.id;
     try {
         const products = await productService.ProductByID(id);
@@ -86,4 +87,6 @@ router.put('/update/:id', async (req, res) => {
     }
 
 });
+
+
 export default router;

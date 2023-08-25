@@ -10,18 +10,17 @@ var app = express();
 app.set('view engine', 'ejs');
 
 
-app.use('/api', productRoutes); 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  // res.header("Content-Security-Policy", "default-src 'self'; font-src 'self' data:; style-src 'self' 'unsafe-inline' data:; img-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src 'self';");
-
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4000'); // Replace with your frontend's URL
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
 
 // ... (error handling middleware)
+app.use('/api', productRoutes); 
 
-const PORT = 3000;
+const PORT = 4000;
 app.listen(PORT, function () {
   console.log(`http://localhost:${PORT}`);
 });
