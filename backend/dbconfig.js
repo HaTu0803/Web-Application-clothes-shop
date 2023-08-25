@@ -14,7 +14,7 @@
 //   }
 // });
 
-const sql = require('mssql')
+import sql from 'mssql';
 
 var config = {
   server: "127.0.0.1", // Make sure to escape backslashes in the server name
@@ -24,9 +24,9 @@ var config = {
   options: {
     trustedconnection: true,
     enableArithAbort : true, 
-    instancename :'SQLEXPRESS'
+    instancename :'MSSQLSERVER01'
   },
   port : 1433
 };
 
-module.exports = config; 
+export default config; 

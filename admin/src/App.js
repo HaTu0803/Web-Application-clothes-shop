@@ -1,9 +1,9 @@
 import './App.css';
 import HomeScreen from './screens/HomeScreen';
-import MainProductScreen from './screens/ProductScreen';
+import ProductScreen from './screens/ProductScreen';
 import AddProductScreen from './screens/AddProductScreen';
 import CategoriesScreen from './screens/CategoriesScreen';
-
+import EditProductScreen from './screens/EditProductScreen';
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -15,10 +15,10 @@ const App = () => {
     <Router>
       <Routes>
       <Route path="/" element={<HomeScreen />} />
-      <Route path="/products" element={<MainProductScreen />} />
+      <Route path="/products" element={<ProductScreen />} />
       <Route path="/addproducts" element={<AddProductScreen />} />
       <Route path="/categories" element={<CategoriesScreen />} />
-
+      <Route path="/editproduct/:id" element={<EditProductScreen />} />
       </Routes>
     </Router>
     
