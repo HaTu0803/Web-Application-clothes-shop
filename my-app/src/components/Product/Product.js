@@ -6,15 +6,24 @@ import Footer from '../Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import "../../css/Product.css";
-// import Slider from "react-slick";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ReactSimplyCarousel from 'react-simply-carousel';
 
 const Product = () => {
     const [currentValue, setCurrentValue] = useState(1);
     const [selectedSize, setSelectedSize] = useState(""); // Thêm state cho kích thước
-    const [carouselIndex, setCarouselIndex] = useState(0);
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
+    const [data, setProducts] = useState([]);
+
+
+    const { id } = useParams();
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/api/products/${id}')
+            .then(res => setProducts(res.data))
+            .catch(err => console.log(err));
+    }, []);
 
     const handleSizeClick = (size) => {
         setSelectedSize(size); // Cập nhật kích thước khi người dùng chọn
@@ -30,39 +39,18 @@ const Product = () => {
         setCurrentValue(prevValue => prevValue + 1);
     };
 
-    const handlePrevClick = () => {
-        if (carouselIndex > 0) {
-            setCarouselIndex(prevIndex => prevIndex - 1);
-        }
-    };
-
-    const handleNextClick = () => {
-        if (carouselIndex < ProductData.length - 4) { // 4 là số lượng sản phẩm hiển thị trên mỗi trang
-            setCarouselIndex(prevIndex => prevIndex + 1);
-        }
-    };
-
-    // Cấu hình cho carousel
-    const settings = {
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        initialSlide: carouselIndex,
-    };
-
-
     return (
         <>
             <Header />
             <div className="product">
                 <div className="sort">
-                    <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/Áo gì đó</p>
+                    <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/ {data && data.ProductName}</p>
                 </div>
                 <div className="product-details">
-                    <img className="product-img" src={ProductData[1].img} alt={ProductData[1].img} />
+                    <img className="product-img" src={data.Photo} alt={data.Photo} />
                     <div className="product-info">
-                        <h1 className="product-name">{ProductData[1].nameProduct}</h1>
-                        <p className="product-price">{ProductData[1].price}</p>
+                        <h1 className="product-name">{data.ProductName}</h1>
+                        <p className="product-price">{data.Price}</p>
                         <div className="product-discount">
                             <ul>
                                 <li>Đồng giá Ship toàn quốc 25.000đ</li>
@@ -73,7 +61,7 @@ const Product = () => {
                         </div>
                         <div className="product-color">  <h2>Màu sắc: {/* ProductData[1].color */}</h2>
                             <button className="product-button1">
-                                <a href="" ><img className="product-button1-img" src={ProductData[1].img} alt={ProductData[1].img} /></a>
+                                <a href="" ><img className="product-button1-img" src={data.Photo} alt={data.Photo} /></a>
                             </button>
                         </div>
                         <div className="product-size">
@@ -88,7 +76,7 @@ const Product = () => {
                             <button className={`product-button2 ${selectedSize === 'XL' ? 'selected' : ''}`} onClick={() => handleSizeClick('XL')}>XL</button>
                         </div>
 
-                        <p className="product-description"><h1>Miêu tả sản phẩm :</h1> ghi description{/* ProductData[1].description */}</p>
+                        <p className="product-description"><h1>Miêu tả sản phẩm :</h1> {data.Descrip}</p>
                         <div className="product-quantity">
                             <h2>Số lượng: </h2>
                             <button className="minus-btn-quantity" onClick={handleDecrease}>-</button>
@@ -156,10 +144,8 @@ const Product = () => {
                     <ReactSimplyCarousel
                         activeSlideIndex={activeSlideIndex}
                         onRequestChange={setActiveSlideIndex}
-                        // itemsToShow={1}
                         itemsToScroll={1}
                         forwardBtnProps={{
-                            //here you can also pass className, or any other button element attributes
                             style: {
                                 alignSelf: 'center',
                                 background: 'black',
@@ -176,7 +162,6 @@ const Product = () => {
                             children: <span>{`>`}</span>,
                         }}
                         backwardBtnProps={{
-                            //here you can also pass className, or any other button element attributes
                             style: {
                                 alignSelf: 'center',
                                 background: 'black',
@@ -202,46 +187,7 @@ const Product = () => {
                         speed={500}
                         easing="ease-in-out"
                     >
-                        <Card
-                            img={ProductData[0].img}
-                            nameProduct={ProductData[0].nameProduct}
-                            price={ProductData[0].price}
-                        />
-                        <Card
-                            img={ProductData[1].img}
-                            nameProduct={ProductData[1].nameProduct}
-                            price={ProductData[1].price}
-                        />
-                        <Card
-                            img={ProductData[3].img}
-                            nameProduct={ProductData[3].nameProduct}
-                            price={ProductData[3].price}
-                        />
-                        <Card
-                            img={ProductData[4].img}
-                            nameProduct={ProductData[4].nameProduct}
-                            price={ProductData[4].price}
-                        />
-                        <Card
-                            img={ProductData[5].img}
-                            nameProduct={ProductData[5].nameProduct}
-                            price={ProductData[5].price}
-                        />
-                        <Card
-                            img={ProductData[6].img}
-                            nameProduct={ProductData[6].nameProduct}
-                            price={ProductData[6].price}
-                        />
-                        <Card
-                            img={ProductData[7].img}
-                            nameProduct={ProductData[7].nameProduct}
-                            price={ProductData[7].price}
-                        />
-                        <Card
-                            img={ProductData[7].img}
-                            nameProduct={ProductData[7].nameProduct}
-                            price={ProductData[7].price}
-                        />
+                        
 
                     </ReactSimplyCarousel>
                 </div>

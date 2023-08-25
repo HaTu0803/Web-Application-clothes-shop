@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import "../../css/NewProduct.css";
 import { Link } from 'react-router-dom';
+import Product from '../Product/Product';
 
 const NewProduct = () => {
     const [sortOption, setSortOption] = useState('tangdan');
@@ -14,6 +15,8 @@ const NewProduct = () => {
     const [productsPerPage] = useState(20);
     const [sortedProductData, setSortedProductData] = useState([]);
     const [selectedPage, setSelectedPage] = useState(1);
+
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:3000/api/newproducts/')
@@ -30,7 +33,7 @@ const NewProduct = () => {
     };
 
     const sortProductData = () => {
-        const sortedData = [...ProductData].sort((a, b) => {
+        const sortedData = products.sort((a, b) => {
             const priceA = parseFloat(a.price);
             const priceB = parseFloat(b.price);
             if (sortOption === 'tangdan') {
