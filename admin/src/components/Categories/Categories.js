@@ -18,11 +18,11 @@ import remove from '../../images/trash-can.svg'
           </div>
           <div className="image_bar">
           <p>Ảnh</p>
-          <input type="file" id="img" name="img" className = "input2" accept="image/*" />
+          <input id="img" name="img" className = "input1"  placeholder="Nhập link ảnh" />
           </div>
           <div className = "filter-button">Tạo mới</div>
           </div>
-          <div className = "right-container">
+          {/* <div className = "right-container">
           <table>
           <tr>
             <th>ID</th>
@@ -62,7 +62,7 @@ import remove from '../../images/trash-can.svg'
         </table>
           
           </div>
-        
+         */}
           </div>
       );
   }

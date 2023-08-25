@@ -59,23 +59,18 @@ const AddProduct = () => {
 
  
   return (
-    <div className="Categories-container">
+    <div className="product-container">
   <form className="left-container" onSubmit={handleSubmit}>
     <div className="category_bar">
       <label htmlFor="category">Tên danh mục</label>
-      <select
+       <input
         id="category"
-        className="category_select"
-        value={selectedCategory}
-        onChange={(e) => setSelectedCategory(e.target.value)}
-      >
-         <option value="">Chọn danh mục</option>
-            {categories.map(category => (
-              <option key={category.CategoryID} value={category.CategoryID}>
-                {category.CategoryID}
-              </option>
-            ))}
-      </select>
+        className="input1"
+        placeholder="Nhập tên danh mục"
+
+        value={product.CategoryID}
+        onChange={e => setProduct({...product, CategoryID:e.target.value})}
+    />
     </div>
     <div className="product_bar">
       <label htmlFor="productName">Tên sản phẩm</label>

@@ -19,7 +19,7 @@
 .Categories-container 
 {
     width: 959px;
-    height: 608px;
+    height: 600px;
     margin-top: 100px;
     margin-left: 300px;
     border: 1px solid #C5C5C5;
@@ -73,7 +73,7 @@ textarea {
 
 }
 
-.right-container {
+/* .right-container {
     width: 50%;
     margin: 15px;
     flex-shrink: 1;
@@ -103,4 +103,4 @@ td:nth-child(4), td:nth-child(5){
 
 .Categories-container p {
     font-size: 18px;
-}
+} */

@@ -35,47 +35,47 @@ export default {
 
   },
 
-  async  AddProduct(product) {
-    try {
-      const pool = await sql.connect(config);
+  // async  AddProduct(product) {
+  //   try {
+  //     const pool = await sql.connect(config);
   
-      const sql1 = `
-        INSERT INTO products (ProductName, Descrip, Photo, CategoryID, SellerID)
-        VALUES (?, ?, ?, ?, ?);
-      `;
+  //     const sql1 = `
+  //       INSERT INTO products (ProductName, Descrip, Photo, CategoryID, SellerID)
+  //       VALUES (?, ?, ?, ?, ?);
+  //     `;
   
-      const sql2 = `
-        INSERT INTO productdetails (SizeID, ColorID, Quantity, Price)
-        VALUES (?, ?, ?, ?);
-      `;
+  //     const sql2 = `
+  //       INSERT INTO productdetails (SizeID, ColorID, Quantity, Price)
+  //       VALUES (?, ?, ?, ?);
+  //     `;
   
-      const transaction = new sql.Transaction(pool);
+  //     const transaction = new sql.Transaction(pool);
   
-      await transaction.begin();
+  //     await transaction.begin();
   
-      const request1 = new sql.Request(transaction);
-      request1.input('ProductName', sql.NVarChar, product.ProductName);
-      request1.input('Descrip', sql.NVarChar, product.Descrip);
-      request1.input('Photo', sql.NVarChar, product.Photo);
-      request1.input('CategoryID', sql.VarChar, product.CategoryID);
-      request1.input('SellerID', sql.Int, product.SellerID);
-      await request1.query(sql1);
+  //     const request1 = new sql.Request(transaction);
+  //     request1.input('ProductName', sql.NVarChar, product.ProductName);
+  //     request1.input('Descrip', sql.NVarChar, product.Descrip);
+  //     request1.input('Photo', sql.NVarChar, product.Photo);
+  //     request1.input('CategoryID', sql.VarChar, product.CategoryID);
+  //     request1.input('SellerID', sql.Int, product.SellerID);
+  //     await request1.query(sql1);
   
-      const request2 = new sql.Request(transaction);
-      request2.input('SizeID', sql.VarChar, product.SizeID);
-      request2.input('ColorID', sql.VarChar, product.ColorID);
-      request2.input('Quantity', sql.Int, product.Quantity);
-      request2.input('Price', sql.Int, product.Price);
-      await request2.query(sql2);
+  //     const request2 = new sql.Request(transaction);
+  //     request2.input('SizeID', sql.VarChar, product.SizeID);
+  //     request2.input('ColorID', sql.VarChar, product.ColorID);
+  //     request2.input('Quantity', sql.Int, product.Quantity);
+  //     request2.input('Price', sql.Int, product.Price);
+  //     await request2.query(sql2);
   
-      await transaction.commit();
+  //     await transaction.commit();
       
-      return "Product added successfully";
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  },
+  //     return "Product added successfully";
+  //   } catch (error) {
+  //     console.error(error);
+  //     throw error;
+  //   }
+  // },
 
   //----------------------------------------------
 //   async AllProducts() {
