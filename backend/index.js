@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 
 // ... (error handling middleware)
 
-const PORT = 4000;
+const PORT = 3000;
 app.listen(PORT, function () {
   console.log(`http://localhost:${PORT}`);
 });

@@ -16,7 +16,7 @@ const NewProduct = () => {
     const [selectedPage, setSelectedPage] = useState(1);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/newproducts/')         //get data from api
+        axios.get('http://localhost:3000/api/newproducts/')
             .then(res => setProducts(res.data))
             .catch(err => console.log(err));
     }, []);

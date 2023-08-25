@@ -17,7 +17,7 @@
 const sql = require('mssql')
 
 var config = {
-  server: "127.0.0.1\\DESKTOP-2V7JI18\\MAYAO", // Make sure to escape backslashes in the server name
+  server: "127.0.0.1", // Make sure to escape backslashes in the server name
   database: "shopping_website", // Corrected "databse" to "database"
   user: 'sa',
   password: "123456",
@@ -26,6 +26,6 @@ var config = {
     enableArithAbort : true, 
     instancename :'DESKTOP-2V7JI18\\MAYAO'
   },
+  port : 1433
 };
-
 module.exports = config; 

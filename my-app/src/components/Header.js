@@ -16,60 +16,47 @@ const Body = () => {
                     <ul className="main-menu">
 
                         <li><Link to="/newproducts" className="menu-text">Hàng Mới</Link></li>
-                        <li className="dropdown"><a href="" className="menu-text">Sản Phẩm</a>
+                        <li className="dropdown"><Link to="/products" className="menu-text">Sản Phẩm</Link>
                             <div className="dropdown-content">
-                                <div className="Type1"><h5>GIÀY</h5>
+                                <div className="Type1"><h5>VÁY ĐẦM</h5>
                                     <ul className='Product'>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
+                                        <li className='Type'><a>Váy mini</a></li>
+                                        <li className='Type'><a>Váy midi</a></li>
+                                        <li className='Type'><a>Váy maxi</a></li>
+                                        <li className='Type'><a>Skirls</a></li>
                                     </ul>
                                 </div>
-                                <div className="Type2"><h5>TÚI</h5>
+                                <div className="Type2"><h5>Áo</h5>
                                     <ul className='Product'>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
+                                        <li className='Type'><a>Áo sơ mi</a></li>
+                                        <li className='Type'><a>Áo Blouse</a></li>
+                                        <li className='Type'><a>Áo choàng</a></li>
+                                        <li className='Type'><a>Áo Blazers</a></li>
+                                        <li className='Type'><a>Áo len</a></li>
                                     </ul>
                                 </div>
-                                <div className="Type3"><h5>PHỤ KIỆN</h5>
+                                <div className="Type3"><h5>Quần</h5>
                                     <ul className='Product'>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
+                                        <li className='Type'><a>Quần dài</a></li>
+                                        <li className='Type'><a>Jean</a></li>
                                     </ul></div>
-                                <div className="Type4"><h5>QUẦN ÁO</h5>
+                                <div className="Type5"><h5>Bộ Sưu Tập</h5>
                                     <ul className='Product'>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                    </ul></div>
-                                <div className="Type5"><h5>BỘ SƯU TẬP</h5>
-                                    <ul className='Product'>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
-                                        <li className='Type'><a>Giày</a></li>
+                                        <li className='Type'><a>MÙA XUÂN - MÙA HẠ</a></li>
+                                        <li className='Type'><a>MÙA THU - MÙA ĐÔNG</a></li>
                                     </ul></div>
                             </div>
                         </li>
                         <li><a href="" className="menu-text">Bộ Sưu Tập</a></li>
+                        <div className="dropdown-collection">
+                            <div className="Type5">
+                                <ul className='Product'>
+                                    <li className='Type'><a>Office Wear</a></li>
+                                    <li className='Type'><a>Vacation Wear</a></li>
+                                    <li className='Type'><a>Casual Wear</a></li>
+                                    <li className='Type'><a>Party Wear</a></li>
+                                </ul></div>
+                        </div>
                         <li><a href="" className="menu-text">Liên Hệ</a></li>
 
 
