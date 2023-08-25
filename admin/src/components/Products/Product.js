@@ -4,7 +4,7 @@ import axios from 'axios';
 import {EditOutlined, DeleteOutlined} from '@ant-design/icons';
 import '../../css/Product.css';
 import { Link } from 'react-router-dom'; // Import the Link component from React Router
-import EditProduct from './EditProduct'; // Make sure to provide the correct path
+// import EditProduct from './EditProduct'; // Make sure to provide the correct path
 
 const {Meta} = Card;
 
@@ -23,34 +23,34 @@ function Product() {
     setQuery(event.target.value);
   };
 
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-  };
+  // const handleCategoryChange = (event) => {
+  //   setSelectedCategory(event.target.value);
+  // };
   
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [productIdToDelete, setProductIdToDelete] = useState(null); // Store the product ID to delete
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [productIdToDelete, setProductIdToDelete] = useState(null); // Store the product ID to delete
 
-  const handleDeleteClick = (id) => {
-    setProductIdToDelete(id); // Set the product ID to delete
-    setIsModalOpen(true);
-  };
+  // const handleDeleteClick = (id) => {
+  //   setProductIdToDelete(id); // Set the product ID to delete
+  //   setIsModalOpen(true);
+  // };
 
-  const handleConfirmDelete = () => {
-    axios
-      .delete(`http://localhost:3000/api/products/${ProductID}`)
-      .then((res) => {
-        setIsModalOpen(false); // Close the modal
-        window.location.reload(); // Reload the page after deletion
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const handleConfirmDelete = () => {
+  //   axios
+  //     .delete(`http://localhost:3000/api/products/${ProductID}`)
+  //     .then((res) => {
+  //       setIsModalOpen(false); // Close the modal
+  //       window.location.reload(); // Reload the page after deletion
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
-  const handleCancelDelete = () => {
-    setIsModalOpen(false); // Close the modal
-    setProductIdToDelete(null); // Clear the product ID
-  };
+  // const handleCancelDelete = () => {
+  //   setIsModalOpen(false); // Close the modal
+  //   setProductIdToDelete(null); // Clear the product ID
+  // };
 
   const sortedProducts = [...products];
   if (sortBy === 'highest') {
@@ -62,8 +62,8 @@ function Product() {
   const filteredProducts = sortedProducts.filter(
     (item) =>
       (item.ProductName.toLowerCase().includes(query.toLowerCase()) ||
-        item.CategoryID.toLowerCase().includes(query.toLowerCase())) &&
-      (selectedCategory === '' || item.CategoryID === selectedCategory)
+        item.CategoryID.toLowerCase().includes(query.toLowerCase()
+        ))
   );
   
   useEffect(() => {
@@ -123,7 +123,7 @@ function Product() {
           </div> */}
         </div>
         <div className='create-button'>
-        <Link to={`/addproduct`}>
+        <Link to={`/addproducts`}>
             <button className='button'>CREATE</button>
           </Link>
         </div>
@@ -152,16 +152,18 @@ function Product() {
                     <EditOutlined className='edit-icon' />
                   </Link>
                 </div>
-                <div className='column' onClick={handleDeleteClick(data.ProductID)}>
+                {/* <div className='column' onClick={handleDeleteClick(data.ProductID)}> */}
+                <div className='column' >
+
                     <DeleteOutlined className='delete-icon' />
                 </div>
-                <Modal isOpen={isModalOpen}>
+                {/* <Modal isOpen={isModalOpen}>
         <div>
           <p>Are you sure you want to delete?</p>
           <button onClick={handleConfirmDelete}>OK</button>
           <button onClick={handleCancelDelete}>Cancel</button>
         </div>
-      </Modal>
+      </Modal> */}
               </div>
             </div>
           ))}
