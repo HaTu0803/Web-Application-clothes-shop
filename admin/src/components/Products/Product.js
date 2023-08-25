@@ -133,7 +133,7 @@ function Product() {
         <div id='product'>
           {filteredProducts.map((data) => (
             <div className='card' key={data.ProductID}>
-              <Link to={`/products/${data.ProductID}`}>
+              <Link to={`/productdetails/${data.ProductID}`}>
                 <img
                   alt={data.ProductName}
                   src={data.Photo}

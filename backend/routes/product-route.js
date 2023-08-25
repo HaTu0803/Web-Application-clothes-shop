@@ -26,6 +26,26 @@ router.get('/products/:id', async (req, res) => {
     }
 
 });
+router.get('/productdetails/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const product1s = await productService.ProductByID(id);
+        const product2s = await productService.ProductDetailByID(id);
+
+        const response = {
+            product1: product1s.recordsets[0],
+            product2: product2s.recordsets[0]
+        };
+
+        return res.json(response);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+});
+
+
 //-------------------NEWPRODUCTS-------------------------------
 router.post('/addproducts', async (req, res) => {
     try {
@@ -57,7 +77,7 @@ router.get('/addproducts/:id', async (req, res) => {
 router.get('/editproduct/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        const products = await productService.ProductByID(id);
+        const products = await productService.EditProductByID(id);
         return res.json(products.recordsets[0]);
     } catch (error) {
         console.log(error)

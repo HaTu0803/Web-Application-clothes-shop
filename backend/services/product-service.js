@@ -31,10 +31,28 @@ export default {
     async ProductByID(id) {
       let pool = await sql.connect(config)
       let result1 = await pool.request().query(`select * from products where ProductID = '${id}'`)
+
       return result1
 
   },
 
+  async ProductDetailByID(id) {
+    let pool = await sql.connect(config)
+    let result1 = await pool.request().query(`select * from products where ProductID = '${id}'`)
+
+    return result1
+
+},
+
+async EditProductByID(id) {
+  let pool = await sql.connect(config)
+  let result1 = await pool.request().query(`select * from products where ProductID = '${id}'`)
+
+  return result1
+
+},
+
+  
   // async  AddProduct(product) {
   //   try {
   //     const pool = await sql.connect(config);
