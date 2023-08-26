@@ -63,7 +63,6 @@ const Dashboard = () => {
             return (
               <div id = "App">
               
-            <Sidebar />
             <div className = "BarChart1">
             <div className = "Chart-title"><p className = "Chart-content">Doanh Thu Hôm Qua</p></div>
             <BarChart chartData={userData1} />

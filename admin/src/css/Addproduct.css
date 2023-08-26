@@ -1,77 +1,61 @@
+/* AddProduct.css */
 
-.filter-button
-{
-    width: 120px;
-    height: 40px;
-    background-color: #FFB9A4;
-    text-align: center;
-    padding: 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 20px auto;
-    
-}
-
-.filter-button:hover {
-    background-color: antiquewhite;
-}
-
-.product-container 
-{
-    width: 959px;
-    height: 800px;
-    margin-top: 100px;
-    margin-left: 300px;
-    border: 1px solid #C5C5C5;
+/* Center the content vertically and horizontally */
+.d-flex {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    height: 100vh;
+  }
   
-}
-
-.left-container {
-    margin: 15px;
+  /* Styling for the product container */
+  .w-50 {
     width: 50%;
-    flex-shrink: 1;
-
-}
-
-.input1 {
-        margin: 10px 0;
-        height: 100%;
-        line-height: 10;
-        width: 100%;
-        border-radius: 5px;
-        font-size: 18px;
-        outline: none;
-        background-color: var(--white-color);
-        color: var(--grey-color);
-        border: 1px solid var(--grey-color-light);
-        padding: 0 20px;
-}
-
-.input2 {
-    border: 1px solid var(--grey-color-light);
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for input fields */
+  .input1 {
     width: 100%;
-    height: 100%;
-    font-size: 18px;
-    border-radius: 5px;
-    outline: none;
-    padding: 10px;
-}
-
-textarea {
-    margin: 10px 0;
-    height: 100px;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Styling for text area */
+  textarea {
     width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Styling for the "Tạo mới" button */
+  .filter-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
     border-radius: 5px;
-    font-size: 18px;
-    outline: none;
-    background-color: var(--white-color);
-    color: var(--grey-color);
-    border: 1px solid var(--grey-color-light);
-    padding: 0 20px;
+    cursor: pointer;
+  }
+  
+  /* Styling for form labels */
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+  
 
-}
-
+  .error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 5px;
+  }

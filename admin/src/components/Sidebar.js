@@ -142,16 +142,6 @@ const Sidebar = () => {
                 </Link>
             </li>
 
-
-            <li className="item">
-            <Link to="/addproducts" className="nav_link">
-                <span className="navlink_icon">
-                  <FontAwesomeIcon icon={faCartPlus} />
-                </span>
-                <span className="navlink">Add Products</span>
-              </Link>
-            </li>
-
             <li className="item">
             <Link to="/categories" className="nav_link">
                 <span className="navlink_icon">

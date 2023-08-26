@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {Card} from 'antd';
 import axios from 'axios';
-import {EditOutlined, DeleteOutlined} from '@ant-design/icons';
+import {EditOutlined, DeleteOutlined, PlusSquareOutlined, ReadOutlined} from '@ant-design/icons';
 import '../../css/Product.css';
 import { Link } from 'react-router-dom'; // Import the Link component from React Router
 // import EditProduct from './EditProduct'; // Make sure to provide the correct path
+import {useParams} from 'react-router-dom';
 
 const {Meta} = Card;
 
@@ -15,6 +16,7 @@ function Product() {
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
 
+  const {id} = useParams();
   const handleSortChange = (event) => {
     setSortBy(event.target.value);
   };
@@ -23,34 +25,13 @@ function Product() {
     setQuery(event.target.value);
   };
 
-  // const handleCategoryChange = (event) => {
-  //   setSelectedCategory(event.target.value);
-  // };
-  
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [productIdToDelete, setProductIdToDelete] = useState(null); // Store the product ID to delete
-
-  // const handleDeleteClick = (id) => {
-  //   setProductIdToDelete(id); // Set the product ID to delete
-  //   setIsModalOpen(true);
-  // };
-
-  // const handleConfirmDelete = () => {
-  //   axios
-  //     .delete(`http://localhost:3000/api/products/${ProductID}`)
-  //     .then((res) => {
-  //       setIsModalOpen(false); // Close the modal
-  //       window.location.reload(); // Reload the page after deletion
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // const handleCancelDelete = () => {
-  //   setIsModalOpen(false); // Close the modal
-  //   setProductIdToDelete(null); // Clear the product ID
-  // };
+  const handleDelete = (id)=>{
+    axios.delete('http://localhost:3000/deleteproducts/'+id)
+    .then((res) => {
+        location.reload();
+      })
+      .catch((err) => console.log(err));
+  }
 
   const sortedProducts = [...products];
   if (sortBy === 'highest') {
@@ -68,8 +49,8 @@ function Product() {
   
   useEffect(() => {
     axios
-      .get('http://localhost:3000/api/product/products/')
-      .then((res) => {
+    .get('http://localhost:3000/api/product/products/')
+    .then((res) => {
         setProducts(res.data);
       })
       .catch((err) => console.log(err));
@@ -122,10 +103,8 @@ function Product() {
             </select>
           </div> */}
         </div>
-        <div className='create-button'>
-        <Link to={`/addproducts`}>
-            <button className='button'>CREATE</button>
-          </Link>
+        <div class='create'>
+            <Link to='/addproducts'>CREATE +</Link>
         </div>
       </div>
         
@@ -144,26 +123,28 @@ function Product() {
                 <span>${data.Price}</span>
               </div>
               <div className='icon-wrapper'>
-                <div className='column'>
+              <div className='column'>
+                <Link
+                    to={`/productdetails/${data.ProductID}`}
+                    className='detail-link'
+                  >
+                    <ReadOutlined className='detail-icon' />
+                  </Link>
+                  </div>
+
+                  <div className='column'>
                   <Link
-                    to={`/editproduct/${data.ProductID}`}
+                    to={`/product/editproduct/${data.ProductID}`}
                     className='edit-link'
                   >
                     <EditOutlined className='edit-icon' />
                   </Link>
                 </div>
-                {/* <div className='column' onClick={handleDeleteClick(data.ProductID)}> */}
+
                 <div className='column' >
 
                     <DeleteOutlined className='delete-icon' />
                 </div>
-                {/* <Modal isOpen={isModalOpen}>
-        <div>
-          <p>Are you sure you want to delete?</p>
-          <button onClick={handleConfirmDelete}>OK</button>
-          <button onClick={handleCancelDelete}>Cancel</button>
-        </div>
-      </Modal> */}
               </div>
             </div>
           ))}

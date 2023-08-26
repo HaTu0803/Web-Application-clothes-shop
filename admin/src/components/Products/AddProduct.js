@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from "react";
 import "../../css/Addproduct.css";
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const AddProduct = () => {
   const [product, setProduct] = useState({
     ProductName: '',
@@ -39,8 +41,38 @@ const AddProduct = () => {
   //     [name]: value,
   //   }));
   // };
+  const [errors, setErrors] = useState({}); // State for validation errors
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    const validationErrors = {};
+    if (!product.CategoryID) {
+      validationErrors.CategoryID = "Vui lòng chọn danh mục.";
+    }
+    if (!product.ProductName) {
+      validationErrors.ProductName = "Vui lòng nhập tên sản phẩm.";
+    }
+    if (!product.Price) {
+      validationErrors.Price = "Vui lòng nhập giá của sản phẩm.";
+    }
+    if (!product.Quantity) {
+      validationErrors.Quantity = "Vui lòng nhập số lượng của sản phẩm.";
+    }
+    if (!product.SizeID) {
+      validationErrors.SizeID = "Vui lòng nhập size của sản phẩm.";
+    }
+    if (!product.ColorID) {
+      validationErrors.ColorID = "Vui lòng nhập màu của sản phẩm.";
+    }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    axios.post('http://localhost:3000/api/product/addproducts/',product,productDetails)    .then(res => {
+      console.log(res);
+    })
+    .catch(err => console.log(err));
     const combinedData = {
       ...product,
       productDetails: [productDetails], // Assuming you want to send an array of details
@@ -64,9 +96,13 @@ const AddProduct = () => {
 
  
   return (
-    <div className="product-container">
-  <form className="left-container" onSubmit={handleSubmit}>
-    <div className="category_bar">
+    <div className="d-flex vh-150 align-items-center">
+        <div className='w-50 bg-white rounded p-3'>
+
+        <form onSubmit={handleSubmit}>
+        <h2>Add Product</h2>
+        <div className="mb-2">
+
       <label htmlFor="category">Tên danh mục</label>
        <input
         id="category"
@@ -152,10 +188,16 @@ const AddProduct = () => {
         onChange={e => setProduct({...product, Photo: e.target.value})}
       />
     </div>
+    {Object.keys(errors).map(key => (
+            <div key={key} className="error-message">
+              {errors[key]}
+            </div>
+          ))}
     <button type="submit" className="filter-button">
       Tạo mới
     </button>
   </form>
+  </div>
 </div>
   )
 };

@@ -1,10 +1,25 @@
-import React  from 'react';
+import React, {useState, useEffect} from 'react';
+import {Card} from 'antd';
+import axios from 'axios';
 import '../../css/Categories.css';
-import edit from '../../images/pencil.svg'
-import remove from '../../images/trash-can.svg'
+import { Link } from 'react-router-dom'; // Import the Link component from React Router
+
+import {EditOutlined, DeleteOutlined, ReadOutlined} from '@ant-design/icons';
 
   
   const Categories = () => {
+
+
+    const [categories, setcategories] = useState([]);
+
+    useEffect(() => {
+      axios
+        .get('http://localhost:3000/api/categories/categories/')
+        .then((res) => {
+          setcategories(res.data);
+        })
+        .catch((err) => console.log(err));
+    }, []);
       return (
           <div className = "Categories-container">
           <div className = "left-container">
@@ -22,47 +37,59 @@ import remove from '../../images/trash-can.svg'
           </div>
           <div className = "filter-button">Tạo mới</div>
           </div>
-          {/* <div className = "right-container">
-          <table>
-          <tr>
-            <th>ID</th>
-            <th>Tên sản phẩm</th>
-            <th>Mô tả</th>
-            <th></th>
-            <th></th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Váy</td>
-            <td>Váy ngắn</td>
-            <td><a href = ""><img src = {edit} /></a></td>
-            <td><img src = {remove} /></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Balo</td>
-            <td>Balo nhỏ, nhẹ</td>
-            <td><img src = {edit}  /></td>
-            <td><img src = {remove}   /></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Áo khoác</td>
-            <td>Áo khoác mùa hè</td>
-            <td><img src = {edit}  /></td>
-            <td><img src = {remove}  /></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Áo thun</td>
-            <td>Áo thun thời trang</td>
-            <td><img src = {edit}   /></td>
-            <td><img src = {remove}   /></td>
-          </tr>
+          { <div className = "right-container">
+          <table className='table'>
+            <thead>
+              <tr>
+              <th>ID danh mục</th>
+              <th>Tên danh mục</th>
+              </tr>
+            </thead>
+            <tbody>
+                {categories.map((data, index)=>{
+                    return <tr key={index}>
+                      <td>
+                        {data.CategoryID}
+                      </td>
+                      <td>
+                        {data.CategoryName}
+                      </td>
+                      <td>
+                      <div className='icon-wrapper'>
+              <div className='column'>
+                <Link
+                    to={`/product/productdetails/${data.ProductID}`}
+                    className='detail-link'
+                  >
+                    <ReadOutlined className='detail-icon' />
+                  </Link>
+                  </div>
+
+                  <div className='column'>
+                  <Link
+                    to={`/product/editproduct/${data.ProductID}`}
+                    className='edit-link'
+                  >
+                    <EditOutlined className='edit-icon' />
+                  </Link>
+                </div>
+
+                {/* <div className='column' onClick={handleDeleteClick(data.ProductID)}> */}
+                <div className='column' >
+
+                    <DeleteOutlined className='delete-icon' />
+                </div>
+       
+              </div>
+                      </td>
+                    </tr>
+                })}
+            </tbody>
+         
         </table>
           
           </div>
-         */}
+         }
           </div>
       );
   }

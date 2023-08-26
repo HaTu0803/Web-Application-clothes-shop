@@ -65,6 +65,19 @@
 
 }
 
+.create{
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 100px;
+  margin-right: 200px;
+
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
 .group {
   display: flex;
   line-height: 28px;
@@ -142,7 +155,9 @@ input:hover {
   justify-content: center; /* Đặt biểu tượng giữa cột */
 }
 .edit-icon,
-.delete-icon {
+.delete-icon
+.add-icon
+.detail-icon {
   font-size: 16px;
   transition: transform 0.2s;
   color: gray;
@@ -151,7 +166,11 @@ input:hover {
 
 
 .edit-icon:hover,
-.delete-icon:hover {
+.delete-icon:hover,
+.add-icon:hover,
+.detail-icon:hover {
   transform: translateY(-3px); /* Di chuyển lên 3px khi hover */
   color: black; /* Có thể thay đổi màu sắc khác nếu cần */
 }
+
+
