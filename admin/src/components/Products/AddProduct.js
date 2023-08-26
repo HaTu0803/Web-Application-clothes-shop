@@ -45,40 +45,39 @@ const AddProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(product)
+    console.log(productDetails)
     
     const validationErrors = {};
-    if (!product.CategoryID) {
+    if (product.CategoryID == "") {
       validationErrors.CategoryID = "Vui lòng chọn danh mục.";
     }
-    if (!product.ProductName) {
+    if (product.ProductName == "") {
       validationErrors.ProductName = "Vui lòng nhập tên sản phẩm.";
     }
-    if (!product.Price) {
+    if (productDetails.Price == 0) {
       validationErrors.Price = "Vui lòng nhập giá của sản phẩm.";
     }
-    if (!product.Quantity) {
+    if (productDetails.Quantity == 0) {
       validationErrors.Quantity = "Vui lòng nhập số lượng của sản phẩm.";
     }
-    if (!product.SizeID) {
+    if (productDetails.SizeID == "") {
       validationErrors.SizeID = "Vui lòng nhập size của sản phẩm.";
     }
-    if (!product.ColorID) {
+    if (productDetails.ColorID == "") {
       validationErrors.ColorID = "Vui lòng nhập màu của sản phẩm.";
     }
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-    axios.post('http://localhost:3000/api/product/addproducts/',product,productDetails)    .then(res => {
-      console.log(res);
-    })
-    .catch(err => console.log(err));
+
     const combinedData = {
       ...product,
-      productDetails: [productDetails], // Assuming you want to send an array of details
+      productDetails, // Assuming you want to send an array of details
     };
 
-    axios.post('http://localhost:3000/api/product/addproducts/',combinedData)
+    axios.post('http://localhost:3000/api/product/addproducts/', combinedData)
     .then(res => {
 
     })
