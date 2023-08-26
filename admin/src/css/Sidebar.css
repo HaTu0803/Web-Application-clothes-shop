@@ -250,8 +250,7 @@ body.dark {
   }
 }
 
-
-
-.selected {
-  background-color: var(--blue-color);
+.active
+{
+  background: var(--blue-color);
 }

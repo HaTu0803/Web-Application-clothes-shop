@@ -1,13 +1,19 @@
+*
+{
+    text-decoration: none;
+}
+
 .card-container {
     display: flex;
     margin-left: 300px;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .add-button
 {
     margin-top: 100px;
-    margin-left: 81.5%;
+    margin-left: 90%;
     width: 120px;
     height: 40px;
     background-color: #FFB9A4;
@@ -19,4 +25,10 @@
 
 .add-button:hover {
     background-color: antiquewhite;
+}
+
+#link
+{
+    text-decoration: none;
+    color: white;
 }

@@ -1,12 +1,8 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import profile from '../images/profile.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { BrowserRouter as Router,Routes, Route, NavLink } from 'react-router-dom';
-import Users from './Users';
-import Dashboard from './Dashboard';
-import Orders from './Orders';
-import Categories from './Categories';
-import OrderDetail from './Order-detail';
 import {
   faTachometerAlt,
   faCartShopping,
@@ -22,9 +18,10 @@ import {
   faSignIn
 } from '@fortawesome/free-solid-svg-icons';
 import '../css/Sidebar.css';
-import { Category } from '@material-ui/icons';
 
 const Sidebar = () => {
+  
+  
   useEffect(() => {
     const handleSidebarOpen = () => {
       const sidebar = document.querySelector('.sidebar');
@@ -73,7 +70,7 @@ const Sidebar = () => {
     const sidebarClose = document.querySelector('.collapse_sidebar');
     const sidebarExpand = document.querySelector('.expand_sidebar');
     const sidebar = document.querySelector('.sidebar');
-
+    
     sidebar.addEventListener("mouseenter", () => {
       if (sidebar.classList.contains("hoverable")) {
         sidebar.classList.remove("close");
@@ -108,7 +105,6 @@ const Sidebar = () => {
 
   return (
     <>
-    <Router>
       <nav className="navbar">
         <div className="logo_item">
           <FontAwesomeIcon icon={faBars} id="sidebarOpen" />
@@ -128,66 +124,59 @@ const Sidebar = () => {
       <nav className="sidebar">
         <div className="menu_content">
           <ul className="menu_items">
-            <li className="item">
-            <NavLink to="/">
-              <div className="nav_link">
+          <li className="item">
+          <Link to="/" className="nav_link">
                 <span className="navlink_icon">
-                  <FontAwesomeIcon icon={faTachometerAlt} />
-                </span>
-                <span className="navlink">Dashboard</span>
-              </div>
-              </NavLink>
+                    <FontAwesomeIcon icon={faTachometerAlt} />
+                  </span>
+                  <span className="navlink">Dashboard</span>
+                </Link>
             </li>
 
             <li className="item">
-              <div className="nav_link">
+            <Link to="/products" className="nav_link">
                 <span className="navlink_icon">
-                  <FontAwesomeIcon icon={faCartShopping} />
-                </span>
-                <span className="navlink">Products</span>
-              </div>
+                    <FontAwesomeIcon icon={faCartShopping} />
+                  </span>
+                  <span className="navlink">Products</span>
+                </Link>
             </li>
 
+
             <li className="item">
-              <div className="nav_link">
+            <Link to="/addproducts" className="nav_link">
                 <span className="navlink_icon">
                   <FontAwesomeIcon icon={faCartPlus} />
                 </span>
                 <span className="navlink">Add Products</span>
-              </div>
+              </Link>
             </li>
 
             <li className="item">
-            <NavLink to="/Categories">
-              <div className="nav_link">
+            <Link to="/categories" className="nav_link">
                 <span className="navlink_icon">
                   <FontAwesomeIcon icon={faListAlt} />
                 </span>
                 <span className="navlink">Categories</span>
-              </div>
-              </NavLink>
+              </Link>
             </li>
 
             <li className="item">
-            <NavLink activeClassName="selected" to="/Orders">
-              <div className="nav_link">
+            <Link to="/Orders" className="nav_link">
                 <span className="navlink_icon">
                   <FontAwesomeIcon icon={faShippingFast} />
                 </span>
                 <span className="navlink">Orders</span>
-              </div>
-              </NavLink>
+              </Link>
             </li>
 
             <li className="item">
-            <NavLink activeClassName="selected" to="/Users">
-              <div className="nav_link">
+            <Link to="/user" className="nav_link">
                 <span className="navlink_icon">
                   <FontAwesomeIcon icon={faUser} />
                 </span>
-                <span className="navlink">Users</span>
-              </div>
-              </NavLink>
+                <span className="navlink">User</span>
+              </Link>
             </li>
 
             <ul className="sidebar_bottom">
@@ -222,14 +211,6 @@ const Sidebar = () => {
           </div>
         </div>
       </nav>
-      <Routes>
-                 <Route exact path='/' element={< Dashboard />}></Route>
-                 <Route exact path='/Users' element={< Users />}></Route>
-                 <Route exact path='/Orders' element={< Orders />}></Route>
-                 <Route exact path='/Categories' element={< Categories />}></Route>
-                 <Route exact path='/Order-detail' element={< OrderDetail />}></Route>
-          </Routes>
-      </Router>
     </>
   );
 };
