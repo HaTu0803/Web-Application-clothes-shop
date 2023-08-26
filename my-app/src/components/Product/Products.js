@@ -7,7 +7,7 @@ import "../../css/NewProduct.css";
 import { Link } from 'react-router-dom';
 
 
-const NewProduct = () => {
+const Products = () => {
     const [sortBy, setSortBy] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage] = useState(20);
@@ -15,7 +15,7 @@ const NewProduct = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/newproducts')
+        axios.get('http://localhost:3000/api/products')
             .then(res => setProducts(res.data))
             .catch(err => console.log(err));
     }, []);
@@ -49,7 +49,7 @@ const NewProduct = () => {
         <>
             <div className="wrapper">
                 <div className="sort">
-                    <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/Hàng Mới</p>
+                    <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/Sản phẩm</p>
 
                     <select id="operators" onChange={handleSortChange} value={sortBy}>
                         <option value='highest'>Giá cao nhất</option>
@@ -94,4 +94,4 @@ const NewProduct = () => {
     );
 };
 
-export default NewProduct;
+export default Products;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
 import "../css/Header.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logo from "../Images/logo.png";
@@ -18,43 +19,52 @@ const Body = () => {
                         <li><Link to="/newproducts" className="menu-text">Hàng Mới</Link></li>
                         <li className="dropdown"><Link to="/products" className="menu-text">Sản Phẩm</Link>
                             <div className="dropdown-content">
-                                <div className="Type1"><h5>VÁY ĐẦM</h5>
+                                <div className="Type1"><Link to="/categorytype/Váy"><h5>VÁY</h5></Link>
                                     <ul className='Product'>
-                                        <li className='Type'><a>Váy mini</a></li>
-                                        <li className='Type'><a>Váy midi</a></li>
-                                        <li className='Type'><a>Váy maxi</a></li>
-                                        <li className='Type'><a>Skirls</a></li>
+                                        <li className='Type'><Link to="/category/Váy mini">Váy mini</Link></li>
+                                        <li className='Type'><Link to="/category/Váy midi">Váy midi</Link></li>
+                                        <li className='Type'><Link to="/category/Váy maxi">Váy maxi</Link></li>
+                                        <li className='Type'><Link to="/category/Váy Skirls">Váy Skirls</Link></li>
                                     </ul>
                                 </div>
-                                <div className="Type2"><h5>Áo</h5>
+                                <div className="Type2"><Link to="/categorytype/Áo"><h5>Áo</h5> </Link>
                                     <ul className='Product'>
-                                        <li className='Type'><a>Áo sơ mi</a></li>
-                                        <li className='Type'><a>Áo Blouse</a></li>
-                                        <li className='Type'><a>Áo choàng</a></li>
-                                        <li className='Type'><a>Áo Blazers</a></li>
-                                        <li className='Type'><a>Áo len</a></li>
+                                        <li className='Type'><Link to="/category/Áo sơ mi">Áo sơ mi</Link></li>
+                                        <li className='Type'><Link to="/category/Áo Blouse">Áo Blouse</Link></li>
+                                        <li className='Type'><Link to="/category/Áo khoác dài">Áo khoác dài</Link></li>
+                                        <li className='Type'><Link to="/category/Áo Blazers">Áo Blazers</Link></li>
+                                        <li className='Type'><Link to="/category/Áo len">Áo len</Link></li>
                                     </ul>
                                 </div>
-                                <div className="Type3"><h5>Quần</h5>
+                                <div className="Type3"><Link to="/categorytype/Quần"><h5>Quần</h5> </Link>
                                     <ul className='Product'>
-                                        <li className='Type'><a>Quần dài</a></li>
-                                        <li className='Type'><a>Jean</a></li>
+                                        <li className='Type'><Link to="/category/Quần dài">Quần dài</Link></li>
+                                        <li className='Type'><Link to="/category/Quần Jean">Quần Jean</Link></li>
                                     </ul></div>
                             </div>
                         </li>
-                        <li><a href="" className="menu-text">Bộ Sưu Tập</a></li>
-                        <div className="dropdown-collection">
-                            <div className="Type5">
-                                <ul className='Product'>
-                                    <li className='Type'><a>Office Wear</a></li>
-                                    <li className='Type'><a>Vacation Wear</a></li>
-                                    <li className='Type'><a>Casual Wear</a></li>
-                                    <li className='Type'><a>Party Wear</a></li>
-                                    <li className='Type'><a>Xuân Hè</a></li>
-                                    <li className='Type'><a>Thu Đông</a></li>
-                                </ul></div>
-                        </div>
-                        <li><a href="" className="menu-text">Liên Hệ</a></li>
+
+                        <li className='dropdown-col'><Link to="/producttags" className="menu-text">Bộ Sưu Tập</Link>
+                            <div className="dropdown-collection">
+                                <div className="Type5">
+                                    <ul className='Product'>
+                                        <li className='Type'><Link to = "/producttag/Office Wear">Office Wear</Link></li>
+                                        <li className='Type'><Link to = "/producttag/Vacation Wear">Vacation Wear</Link></li>
+                                        <li className='Type'><Link to = "/producttag/Casual Wear">Casual Wear</Link></li>
+                                        <li className='Type'><Link to = "/producttag/Party Wear">Party Wear</Link></li>
+                                    </ul></div>
+                                <div className="Type6">
+                                    <ul className='Product'>
+                                        <li className='Type'><Link to = "/producttag/Xuân Hè">Xuân Hè</Link></li>
+                                        <li className='Type'><Link to = "/producttag/Thu Đông">Thu Đông</Link></li>
+                                    </ul></div>
+                            </div>
+                        </li>
+                        <li>
+                            <ScrollLink to="footer" smooth={true} duration={500}>
+                                <div className="menu-text">Liên Hệ</div>
+                            </ScrollLink>
+                        </li>
 
 
                         <nav className="menu-right">

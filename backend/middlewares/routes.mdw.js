@@ -8,8 +8,4 @@ export default function (app) {
     res.render('HomeScreen')
   })
 
-
-  app.use('/newproducts', ProductRoute)
-
-
 }

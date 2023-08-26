@@ -40,7 +40,7 @@ const Card = (props) => {
   return (
     <div className="card">
       <div className="card-body">
-        <Link to="/product/${props.id}" ><img src={props.image} className="img1" alt="Product" /></Link>
+        <Link to={`/products/${props.id}`} ><img src={props.image} className="img1" alt="Product"/></Link>
         <div className="action-product">
           <a href="#" className="action tooltip">
             <FontAwesomeIcon icon={faShoppingBag} />

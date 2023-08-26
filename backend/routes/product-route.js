@@ -37,7 +37,7 @@ router.get('/products/:id', async (req, res) => {
 
 });
 
-router.get('/products/catagory/:type', async (req, res) => {
+router.get('/category/:type', async (req, res) => {
     const type = req.params.type;
     try {
         const products = await productService.ProductByCategoryName(type);
@@ -48,7 +48,18 @@ router.get('/products/catagory/:type', async (req, res) => {
     }
 });
 
-router.get('/products/tags', async (req, res) => {
+router.get('/categorytype/:type', async (req, res) => {
+    const type = req.params.type;
+    try {
+        const products = await productService.ProductByCategory(type);
+        return res.json(products.recordsets[0]);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+router.get('/producttags', async (req, res) => {
     try {
         const products = await productService.ProductByTags();
         return res.json(products.recordsets[0]);
@@ -58,10 +69,10 @@ router.get('/products/tags', async (req, res) => {
     }
 });
 
-router.get('/products/tag/:style', async (req, res) => {
-    const style = req.params.style;
+router.get('/producttag/:type', async (req, res) => {
+    const type = req.params.type;
     try {
-        const products = await productService.ProductByTagName(style);
+        const products = await productService.ProductByTagName(type);
         return res.json(products.recordsets[0]);
     } catch (error) {
         console.log(error)
