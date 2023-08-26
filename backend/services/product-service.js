@@ -179,6 +179,14 @@ async UpdateByID(id){
   return result1
 },
 
+//----------------------------------------------------
+async AllCategory() {
+  let pool = await sql.connect(config)
+  let result1 = await pool.request().query('SELECT * FROM categories')
+  // let result1 = await pool.request().query('SELECT * FROM products')
+  return result1
+
+},
 
 }
 
