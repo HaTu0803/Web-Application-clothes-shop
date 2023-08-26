@@ -1,10 +1,10 @@
 import React from 'react';
-import Slide from '../Slide';
-import Service from '../Service';
-import CardList from '../CardList';
-import CardDetail from '../CardDetail';
-import SideContent from '../SideContent';
-import Sales from '../Sales';
+import Slide from '../Slide/Slide';
+import Service from '../Service/Service';
+import CardList from '../CardList/CardList';
+import CardDetail from '../CardDetail/CardDetail';
+import SideContent from '../SlideContent/SideContent';
+import Sales from '../Sales/Sales';
 
 
 

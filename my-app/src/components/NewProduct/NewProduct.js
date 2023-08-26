@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../Header';
-import Card from '../Card';
-import { ProductData } from "../../Helpers/ProductData";
-import Footer from '../Footer';
+import axios from 'axios';
+import Card from '../Card/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import "../../css/NewProduct.css";
 import { Link } from 'react-router-dom';
-import Product from '../Product/Product';
+
 
 const NewProduct = () => {
     const [sortOption, setSortOption] = useState('tangdan');
@@ -15,11 +13,10 @@ const NewProduct = () => {
     const [productsPerPage] = useState(20);
     const [sortedProductData, setSortedProductData] = useState([]);
     const [selectedPage, setSelectedPage] = useState(1);
-
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/newproducts/')
+        axios.get('http://localhost:3000/api/newproducts')
             .then(res => setProducts(res.data))
             .catch(err => console.log(err));
     }, []);
@@ -62,7 +59,6 @@ const NewProduct = () => {
 
     return (
         <>
-            <Header />
             <div className="wrapper">
                 <div className="sort">
                     <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/Hàng Mới</p>
@@ -106,7 +102,6 @@ const NewProduct = () => {
                     ))}
                 </div>
             </div>
-            <Footer />
         </>
     );
 };

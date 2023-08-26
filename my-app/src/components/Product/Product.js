@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../Header';
-import Card from '../Card';
-import { ProductData } from "../../Helpers/ProductData";
-import Footer from '../Footer';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import "../../css/Product.css";
@@ -41,7 +38,6 @@ const Product = () => {
 
     return (
         <>
-            <Header />
             <div className="product">
                 <div className="sort">
                     <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/ {data && data.ProductName}</p>
@@ -193,7 +189,6 @@ const Product = () => {
                 </div>
 
             </div>
-            <Footer />
         </>
     );
 };

@@ -1,16 +1,11 @@
 import React from 'react';
-// import '../../css/Payment.css';
-
+import '../../css/Payment.css';
 import { FaCcVisa, FaCcMastercard, FaCcDiscover } from 'react-icons/fa';
-import Header from '../Header';
-import Footer from '../Footer';
+
 
 const Payment = () => {
     return (
-
         <>
-            <Header />
-
             <div class="container">
 
                 <div class="row">
@@ -121,7 +116,6 @@ const Payment = () => {
                 </div>
 
             </div>
-            <Footer />
         </>
     );
 }

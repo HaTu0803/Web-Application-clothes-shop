@@ -1,12 +1,9 @@
 import React from 'react';
 import './index.css';
 import HomeScreen from './screens/HomeScreen';
-import NewProduct from './components/NewProduct/NewProduct';
-import Product from './components/Product/Product';
-import Cart from './components/Cart/Cart';
-import Payment from './components/Payment/Payment';
-import { ProductData } from "./Helpers/ProductData";
-import Product from './components/Product/Product';
+import NewProductScreen from './screens/NewProductScreen';
+import CartScreen from './screens/CartScreen';
+import PaymentScreen from './screens/PaymentScreen';
 import {
   BrowserRouter as Router,
   Routes,
@@ -20,10 +17,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<HomeScreen />} />
-        <Route path="/newproducts" element={<NewProduct />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/payment" element={<Payment />} />
-        <Route path="/product/1" element={<Product />} />
+        <Route path="/newproducts" element={<NewProductScreen />} />
+        <Route path="/cart" element={<CartScreen />} />
+        <Route path="/payment" element={<PaymentScreen />} />
       </Routes>
     </Router>
   )

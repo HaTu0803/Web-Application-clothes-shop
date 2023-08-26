@@ -20,11 +20,11 @@ var config = {
   server: "127.0.0.1", // Make sure to escape backslashes in the server name
   database: "shopping_website", // Corrected "databse" to "database"
   user: 'sa',
-  password: "123456",
+  password: "123",
   options: {
     trustedconnection: true,
     enableArithAbort : true, 
-    instancename :'DESKTOP-2V7JI18\\MAYAO'
+    instancename :'MSSQLSERVER01'
   },
   port : 1433
 };

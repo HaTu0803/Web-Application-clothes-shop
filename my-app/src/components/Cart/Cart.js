@@ -1,14 +1,11 @@
 import React from 'react';
 import '../../css/Cart.css';
 import remove from '../../Images/trash.svg';
-import Header from '../Header';
-import Footer from '../Footer';
 import { Link } from 'react-router-dom';
 
 const Cart = () => {
   return (
     <>
-      <Header />
       <div className="Cart-container">
 
         <div className="cart-info">
@@ -55,7 +52,6 @@ const Cart = () => {
           <Link to= "/payment"><button style={{ width: '200px', height: '50px', fontSize: '16px', backgroundColor: 'red', color: 'white' }}>Thanh toán ngay</button> </Link> 
         </div>
       </div>
-      <Footer />
     </>
   );
 }

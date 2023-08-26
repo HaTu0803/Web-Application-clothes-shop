@@ -40,11 +40,6 @@ const Body = () => {
                                         <li className='Type'><a>Quần dài</a></li>
                                         <li className='Type'><a>Jean</a></li>
                                     </ul></div>
-                                <div className="Type5"><h5>Bộ Sưu Tập</h5>
-                                    <ul className='Product'>
-                                        <li className='Type'><a>MÙA XUÂN - MÙA HẠ</a></li>
-                                        <li className='Type'><a>MÙA THU - MÙA ĐÔNG</a></li>
-                                    </ul></div>
                             </div>
                         </li>
                         <li><a href="" className="menu-text">Bộ Sưu Tập</a></li>
@@ -55,6 +50,8 @@ const Body = () => {
                                     <li className='Type'><a>Vacation Wear</a></li>
                                     <li className='Type'><a>Casual Wear</a></li>
                                     <li className='Type'><a>Party Wear</a></li>
+                                    <li className='Type'><a>Xuân Hè</a></li>
+                                    <li className='Type'><a>Thu Đông</a></li>
                                 </ul></div>
                         </div>
                         <li><a href="" className="menu-text">Liên Hệ</a></li>
