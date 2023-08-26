@@ -10,13 +10,13 @@ import {EditOutlined, DeleteOutlined, ReadOutlined} from '@ant-design/icons';
   const Categories = () => {
 
 
-    const [categories, setcategories] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
       axios
         .get('http://localhost:3000/api/categories/categories/')
         .then((res) => {
-          setcategories(res.data);
+          setCategories(res.data);
         })
         .catch((err) => console.log(err));
     }, []);
