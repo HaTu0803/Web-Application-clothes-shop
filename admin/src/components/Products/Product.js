@@ -68,7 +68,7 @@ function Product() {
   
   useEffect(() => {
     axios
-      .get('http://localhost:3000/api/products/')
+      .get('http://localhost:3000/api/product/products/')
       .then((res) => {
         setProducts(res.data);
       })

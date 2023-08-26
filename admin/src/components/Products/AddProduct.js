@@ -41,7 +41,7 @@ const AddProduct = () => {
   // };
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3000/api/addproducts/',product,productDetails)
+    axios.post('http://localhost:3000/api/product/addproducts/',product,productDetails)
     .then(res => {
       console.log(res);
     })
@@ -49,7 +49,7 @@ const AddProduct = () => {
 };
 
   useEffect(()=>{
-    axios.post('http://localhost:3000/api/addproducts/')
+    axios.post('http://localhost:3000/api/product/addproducts/')
     .then((res) => {
       setProduct(res.data);
       setProductDetails(res.data);

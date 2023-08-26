@@ -13,7 +13,7 @@ function EditProduct() {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/editproduct/${ProductID}`)
+    axios.get(`http://localhost:3000/api/product/editproduct/${ProductID}`)
       .then(res => {
         const productData = res.data[0]; // Assuming you receive an array with a single product
         setValues({
@@ -27,7 +27,7 @@ function EditProduct() {
 
   const handleUpdate = (event) => {
     event.preventDefault();
-    axios.put(`http://localhost:3000/api/updateproduct/${ProductID}`, values)
+    axios.put(`http://localhost:3000/api/product/updateproduct/${ProductID}`, values)
       .then(res => {
         console.log(res);
         navigate('/');

@@ -15,7 +15,7 @@ function ProductDetail() {
     const {id} = useParams();
   useEffect(() => {
     axios
-    axios.get(`http://localhost:3000/api/products`+id)
+    axios.get(`http://localhost:3000/api/product/products`+id)
       .then((res) => {
         setProducts(res.data);
         // setProductDetals(res.data);
