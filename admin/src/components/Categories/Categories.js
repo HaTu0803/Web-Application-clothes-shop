@@ -27,14 +27,7 @@ import {EditOutlined, DeleteOutlined, ReadOutlined} from '@ant-design/icons';
           <p>Tên danh mục</p>
           <input type="text" className = "input1" placeholder="Nhập tên" />
           </div>
-          <div className="des_bar">
-          <p>Mô tả</p>
-          <textarea placeholder="Nhập mô tả" />
-          </div>
-          <div className="image_bar">
-          <p>Ảnh</p>
-          <input id="img" name="img" className = "input1"  placeholder="Nhập link ảnh" />
-          </div>
+          
           <div className = "filter-button">Tạo mới</div>
           </div>
           { <div className = "right-container">
