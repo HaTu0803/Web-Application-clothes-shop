@@ -1,7 +1,9 @@
 import express from 'express';
 import productService from '../services/product-service.js';
+import bodyParser from 'body-parser';
 
 const router = express.Router();
+router.use(bodyParser.json());
 
 router.get('/products', async (req, res) => {
     try {
@@ -50,6 +52,7 @@ router.get('/productdetails/:id', async (req, res) => {
 router.post('/addproducts', async (req, res) => {
     try {
         const product = req.body;
+        console.log(product)
         const result = await productService.AddProduct(product);
         
         res.json(result);

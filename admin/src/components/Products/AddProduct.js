@@ -41,9 +41,14 @@ const AddProduct = () => {
   // };
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3000/api/product/addproducts/',product,productDetails)
+    const combinedData = {
+      ...product,
+      productDetails: [productDetails], // Assuming you want to send an array of details
+    };
+
+    axios.post('http://localhost:3000/api/product/addproducts/',combinedData)
     .then(res => {
-      console.log(res);
+
     })
     .catch(err => console.log(err));
 };
