@@ -114,6 +114,16 @@ const AddProduct = () => {
     />
     </div>
     <div className="product_bar">
+      <label htmlFor="productName">ID sản phẩm</label>
+      <input
+        id="productID"
+        className="input1"
+        placeholder="Nhập ID sản phẩm"
+        value={product.ProductID}
+        onChange={e => setProduct({...product, ProductID: e.target.value})}
+      />
+    </div>
+    <div className="product_bar">
       <label htmlFor="productName">Tên sản phẩm</label>
       <input
         id="productName"

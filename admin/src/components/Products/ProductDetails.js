@@ -34,6 +34,7 @@ function ProductDetail() {
                   src={products.Photo}
                 />
               <div className='content'>
+              <span>{products.ProductID}</span>
                 <span>{products.ProductName}</span>
                 <span>{products.Descrip}</span>
                 <span>{products.CategoryID}</span>
