@@ -52,7 +52,6 @@ router.get('/productdetails/:id', async (req, res) => {
 router.post('/addproducts', async (req, res) => {
     try {
         const product = req.body;
-        console.log(product)
         const result = await productService.AddProduct(product);
         
         res.json(result);
@@ -80,8 +79,22 @@ router.get('/addproducts/:id', async (req, res) => {
 router.get('/editproduct/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        const products = await productService.EditProductByID(id);
+        const products = await productService.GetProductByID(id);
         return res.json(products.recordsets[0]);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+});
+
+router.post('/editproduct/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const product = req.body;
+        const result = await productService.EditProductByID(id, product);
+        
+        res.json(result);
     } catch (error) {
         console.log(error)
         res.status(500).json({ error: 'Internal Server Error' });

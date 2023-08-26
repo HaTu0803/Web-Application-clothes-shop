@@ -44,12 +44,16 @@ export default {
 
 },
 
-async EditProductByID(id) {
+async GetProductByID(id) {
   let pool = await sql.connect(config)
   let result1 = await pool.request().query(`select * from products where ProductID = '${id}'`)
-
   return result1
+},
 
+async EditProductByID(id, product) {
+  let pool = await sql.connect(config)
+  let result1 = await pool.request().query(`update products set productName = '${product.productName}', descrip = '${product.descrip}', photo = '${product.photo}' where ProductID = '${id}'`)
+  return result1
 },
 
   async  AddProduct(product) {
