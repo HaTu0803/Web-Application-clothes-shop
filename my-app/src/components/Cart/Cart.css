@@ -1,0 +1,81 @@
+table {
+  width: 100%;
+  font-size: 18px;
+  text-align: center;
+  margin: 130px 0px;
+  font-weight: 600;
+
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  padding: 10px 5px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+td {
+  padding: 10px 5px;
+  background-color: rgb(255, 255, 255);
+
+}
+
+td:nth-child(4),
+td:nth-child(5) {
+  cursor: pointer;
+}
+
+.Cart-container {
+  font-size: 18px;
+  color: black
+}
+
+.continue-buy-btn,
+.payment-btn {
+  width: 200px;
+  font-size: 16px;
+  border: none;
+  text-align: center;
+  padding: 12px 0px;
+  margin: 12px 0;
+}
+
+.continue-buy-btn {
+  background-color: rgb(44, 43, 43);
+  color: white;
+}
+
+.continue-buy-btn:hover {
+  background-color: rgb(26, 25, 25);
+}
+
+.payment-btn {
+  background-color: #f02757;
+  color: white;
+}
+
+.payment-btn:hover {
+  background-color: #f31649;
+}
+
+.payment-content{
+  display: flex;
+  width: 30%;
+  margin: 0 auto;
+}
+
+.payment-title,
+.payment-total {
+  flex: 1;
+}
+
+.payment-title{
+  font-weight: 600;
+}
+
+.payment-total{
+  font-weight: 800;
+}
