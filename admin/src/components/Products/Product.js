@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 // import {Card} from 'antd';
-import axios from 'axios';
 import {EditOutlined, DeleteOutlined, ReadOutlined} from '@ant-design/icons';
 import '../../css/Product.css';
 import {Link} from 'react-router-dom';
+import ProductController from '../Controller/ProductController';
 // import EditProduct from './EditProduct';
 // import {useParams} from 'react-router-dom';
 
@@ -50,13 +50,15 @@ function Product() {
         item.CategoryID.toLowerCase().includes(query.toLowerCase(),
         )),
   );
+  const doSomething = async () =>{
+    const product = await
+          ProductController.getAllProduct();
+          if (product) {
+            setProducts(product);
+          }
+  };
   useEffect(() => {
-    axios
-    .get('http://localhost:3000/api/product/products/')
-    .then((res) => {
-        setProducts(res.data);
-      })
-      .catch((err) => console.log(err));
+    doSomething();
   }, []);
 
   return (

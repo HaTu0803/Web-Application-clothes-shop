@@ -25,23 +25,18 @@ export default {
         let result1 = await pool.request().query('SELECT distinct p.ProductID,p.ProductName,p.Photo,p.CategoryID, pd.Quantity,pd.Price FROM products p INNER JOIN productdetails pd ON p.ProductID = pd.ProductID')
         // let result1 = await pool.request().query('SELECT * FROM products')
         return result1
-
     },
 
     async ProductByID(id) {
       let pool = await sql.connect(config)
-      let result1 = await pool.request().query(`select * from products where ProductID = '${id}'`)
-
+      let result1 = await pool.request().query(`SELECT distinct p.ProductID,p.ProductName,p.Photo,p.CategoryID, cate.CategoryName, pd.Quantity,pd.Price, c.ColorName, s.SizeName FROM products p INNER JOIN productdetails pd ON p.ProductID = pd.ProductID JOIN colors c on pd.ColorID = c.ColorID join sizes s on pd.SizeID = s.SizeID join categories cate on p.CategoryID = cate.CategoryID where p.ProductID = '${id}'`)
       return result1
-
   },
 
   async ProductDetailByID(id) {
     let pool = await sql.connect(config)
     let result1 = await pool.request().query(`select * from products where ProductID = '${id}'`)
-
     return result1
-
 },
 
 async GetProductByID(id) {

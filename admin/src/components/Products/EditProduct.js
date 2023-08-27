@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import '../../css/Editproduct.css';
-import axios from 'axios';
+import ProductController from '../Controller/ProductController';
 
 /**
  * Modifies the details of a product.
@@ -24,28 +24,26 @@ function EditProduct() {
     photo: '',
   });
 
- useEffect(() => {
-    axios.get(`http://localhost:3000/api/product/editproduct/${ProductID}`)
-      .then((res) => {
-        const productData = res.data[0];
-        if (productData) {
-          setValues((prevValues) => ({
-            ...prevValues,
-            productName: productData.ProductName || '',
-            descrip: productData.Descrip || '',
-            photo: productData.Photo || '',
-          }));
-        }
-      })
-      .catch((err) => console.log(err));
+  const doSomething = async () =>{
+    const productData = await
+          ProductController.getProductToEdit(ProductID);
+          if (productData) {
+            setValues((prevValues) => ({
+              ...prevValues,
+              productName: productData.ProductName || '',
+              descrip: productData.Descrip || '',
+              photo: productData.Photo || '',
+            }));
+          }
+  };
+  useEffect(() => {
+    doSomething();
   }, [ProductID]);
+
 
   const handleUpdate = (event) => {
     event.preventDefault();
-      axios.post(`http://localhost:3000/api/product/editproduct/${ProductID}`, values)
-      .then((res) => {
-      })
-      .catch((err) => console.log(err));
+    ProductController.editProduct(ProductID, values);
   };
 
   return (

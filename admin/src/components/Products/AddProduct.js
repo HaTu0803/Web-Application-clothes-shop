@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import '../../css/Addproduct.css';
-import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductController from '../Controller/ProductController';
 
@@ -74,24 +73,17 @@ const AddProduct = () => {
       ...product,
       productDetails, // Assuming you want to send an array of details
     };
-
-    axios.post('http://localhost:3000/api/product/addproducts/', combinedData)
-    .then((res) => {
-
-    })
-    .catch((err) => console.log(err));
-
     ProductController.addProduct(combinedData);
 };
 
-  useEffect(()=>{
-    axios.post('http://localhost:3000/api/product/addproducts/')
-    .then((res) => {
-      setProduct(res.data);
-      setProductDetails(res.data);
-    })
-    .catch((err) => console.log(err));
-}, []);
+//   useEffect(()=>{
+//     axios.post('http://localhost:3000/api/product/addproducts/')
+//     .then((res) => {
+//       setProduct(res.data);
+//       setProductDetails(res.data);
+//     })
+//     .catch((err) => console.log(err));
+// }, []);
 
   return (
     <div className="d-flex vh-150 align-items-center">

@@ -1,28 +1,36 @@
-import React, {useState, useEffect} from 'react';
-import {Card} from 'antd';
-import axios from 'axios';
+import React, {useState, useEffect, useMemo} from 'react';
+// import {Card} from 'antd';
 import '../../css/Product.css';
-import { Link } from 'react-router-dom'; // Import the Link component from React Router
-// import EditProduct from './EditProduct'; // Make sure to provide the correct path
+import ProductController from '../Controller/ProductController';
+// import { Link } from 'react-router-dom';
+// import EditProduct from './EditProduct';
 
-const {Meta} = Card;
+// const {Meta} = Card;
 
-
+/**
+ * Represents a component that displays a list of
+ * products and allows sorting and searching.
+ * @return {boolean}
+ */
 function ProductDetail() {
-    
     const [products, setProducts] = useState([]);
 
-    const {id} = useParams();
-  useEffect(() => {
-    axios
-    axios.get(`http://localhost:3000/api/product/products`+id)
-    .then((res) => {
-        setProducts(res.data);
-        // setProductDetals(res.data);
-
-      })
-      .catch((err) => console.log(err));
+    const currentPath = window.location.pathname;
+  const pathSegments = currentPath.split('/');
+  const ProductID = useMemo(() => {
+    return pathSegments[pathSegments.length - 1];
   }, []);
+  const doSomething = async () =>{
+    const product = await
+          ProductController.getProductByID(ProductID);
+          console.log(product);
+          if (product) {
+            setProducts(product);
+          }
+  };
+  useEffect(() => {
+    doSomething();
+  }, [ProductID]);
 
   return (
     <>
@@ -38,10 +46,10 @@ function ProductDetail() {
                 <span>{products.ProductName}</span>
                 <span>{products.Descrip}</span>
                 <span>{products.CategoryID}</span>
-                {/* <span>{productdetails.SizeID}</span>
-                <span>{productdetails.ColorID}</span>
-                <span>{productdetails.Quantity}</span>
-                <span>{productdetails.Price}</span> */}
+                <span>{products.SizeName}</span>
+                <span>{products.ColorName}</span>
+                <span>{products.Quantity}</span>
+                <span>{products.Price}</span>
               </div>
             </div>
         </div>
@@ -52,8 +60,5 @@ function ProductDetail() {
 }
 
 export default ProductDetail;
-
-
-
 
 
