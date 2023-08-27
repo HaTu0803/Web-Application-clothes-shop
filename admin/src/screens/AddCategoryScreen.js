@@ -1,16 +1,16 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
-import ProductDetails from '../components/Products/ProductDetails.js';
+import AddCategory from '../components/Categories/AddCategory';
 
-const ProductDetailScreen = () => {
+const AddCategorytScreen = () => {
   return (
     <>
       <Sidebar />
       <main className="main-wrap">
-        <ProductDetails/>
+        <AddCategory/>
       </main>
     </>
   );
 };
 
-export default ProductDetailScreen;
+export default AddCategorytScreen;

@@ -1,9 +1,8 @@
-import React from "react";
+import React from 'react';
 import Sidebar from '../components/Sidebar';
-import Categories from "./../components/Categories/Categories";
+import Categories from './../components/Categories/Categories';
 
 const CategoriesScreen = () => {
-  
   return (
     <>
       <Sidebar />

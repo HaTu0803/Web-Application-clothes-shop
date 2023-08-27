@@ -1,6 +1,6 @@
-import React from "react";
-import Sidebar from "../components/Sidebar";
-import Products from "../components/Products/Product.js";
+import React from 'react';
+import Sidebar from '../components/Sidebar';
+import Products from '../components/Products/Product.js';
 
 const ProductScreen = () => {
   return (

@@ -6,6 +6,8 @@ import ProductDetailScreen from './screens/ProductDetailScreen';
 import AddProductScreen from './screens/AddProductScreen';
 import CategoriesScreen from './screens/CategoriesScreen';
 import EditProductScreen from './screens/EditProductScreen';
+import AddCategorytScreen from './screens/AddCategoryScreen';
+import EditCategoryScreen from './screens/EditCategoryScreen';
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -26,6 +28,8 @@ const App = () => {
       <Route path="/categories" element={<CategoriesScreen />} />
       <Route path="/editproduct/:id" element={<EditProductScreen />} />
       <Route path="/productdetails/:id" element={<ProductDetailScreen />} />
+      <Route path="/addcategories" element={<AddCategorytScreen />} />
+      <Route path="/editcategory/:id" element={<EditCategoryScreen />} />
       </Routes>
     </Router>
   );

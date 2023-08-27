@@ -1,9 +1,8 @@
-import React from "react";
+import React from 'react';
 import Sidebar from '../components/Sidebar';
-import AddProducts from "../components/Products/AddProduct";
+import AddProducts from '../components/Products/AddProduct';
 
 const AddProductScreen = () => {
-  
   return (
     <>
       <Sidebar />

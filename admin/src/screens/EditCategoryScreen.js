@@ -1,16 +1,16 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
-import ProductDetails from '../components/Products/ProductDetails.js';
+import EditCategory from '../components/Categories/EditCategory';
 
-const ProductDetailScreen = () => {
+const EditCategoryScreen = () => {
   return (
     <>
       <Sidebar />
       <main className="main-wrap">
-        <ProductDetails/>
+        <EditCategory />
       </main>
     </>
   );
 };
 
-export default ProductDetailScreen;
+export default EditCategoryScreen;

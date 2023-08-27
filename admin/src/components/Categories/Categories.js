@@ -1,24 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import {Card} from 'antd';
-import axios from 'axios';
 import '../../css/Categories.css';
-import { Link } from 'react-router-dom'; // Import the Link component from React Router
+import {Link} from 'react-router-dom';
+import ProductController from '../Controller/ProductController';
 
 import {EditOutlined, DeleteOutlined, ReadOutlined} from '@ant-design/icons';
 
-  
   const Categories = () => {
-
-
     const [categories, setCategories] = useState([]);
-
+    const doSomething = async () =>{
+      const product = await
+            ProductController.getAllCategory();
+            if (product) {
+              setCategories(product);
+            }
+    };
     useEffect(() => {
-      axios
-        .get('http://localhost:3000/api/categories/categories/')
-        .then((res) => {
-          setCategories(res.data);
-        })
-        .catch((err) => console.log(err));
+      doSomething();
     }, []);
       return (
           <div className = "Categories-container">
@@ -27,7 +24,6 @@ import {EditOutlined, DeleteOutlined, ReadOutlined} from '@ant-design/icons';
           <p>Tên danh mục</p>
           <input type="text" className = "input1" placeholder="Nhập tên" />
           </div>
-          
           <div className = "filter-button">Tạo mới</div>
           </div>
           { <div className = "right-container">
@@ -67,26 +63,21 @@ import {EditOutlined, DeleteOutlined, ReadOutlined} from '@ant-design/icons';
                   </Link>
                 </div>
 
-                {/* <div className='column' onClick={handleDeleteClick(data.ProductID)}> */}
+                {/* <div className='column'
+                onClick={handleDeleteClick(data.ProductID)}> */}
                 <div className='column' >
 
                     <DeleteOutlined className='delete-icon' />
                 </div>
-       
               </div>
                       </td>
-                    </tr>
+                    </tr>;
                 })}
             </tbody>
-         
         </table>
-          
           </div>
          }
           </div>
       );
-  }
-  
-  export default Categories;
-  
-  
+  };
+export default Categories;

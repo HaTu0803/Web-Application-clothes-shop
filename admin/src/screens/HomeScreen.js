@@ -1,6 +1,5 @@
-import React from "react";
-import Dashboard from "../components/Home/Dashboard";
-
+import React from 'react';
+import Dashboard from '../components/Home/Dashboard';
 import Sidebar from '../components/Sidebar';
 
 const HomeScreen = () => {
