@@ -1,48 +1,51 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import '../../css/Editproduct.css';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+
+/**
+ * Modifies the details of a product.
+ *
+ * @param {string} productId
+ * @param {Object} updatedDetails
+ * @param {string} updatedDetails.name
+ * @param {number} updatedDetails.price
+ * @param {string} updatedDetails.description
+ * @return {boolean}
+ */
 function EditProduct() {
-  const navigate = useNavigate();
-  const currentPath = window.location.pathname; 
+  const currentPath = window.location.pathname;
   const pathSegments = currentPath.split('/');
-  
   const ProductID = useMemo(() => {
     return pathSegments[pathSegments.length - 1];
   }, []);
   const [values, setValues] = useState({
     productName: '',
     descrip: '',
-    photo: ''
+    photo: '',
   });
 
-  useEffect(() => {
+ useEffect(() => {
     axios.get(`http://localhost:3000/api/product/editproduct/${ProductID}`)
-      .then(res => {
-        const productData = res.data[0]; // Assuming you receive an array with a single product
-       
-        // Make sure productData is valid before updating state
+      .then((res) => {
+        const productData = res.data[0];
         if (productData) {
-          setValues({
+          setValues((prevValues) => ({
+            ...prevValues,
             productName: productData.productName || '',
             descrip: productData.descrip || '',
-            photo: productData.photo || ''
-          });
+            photo: productData.photo || '',
+          }));
         }
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, [ProductID]);
-  
 
   const handleUpdate = (event) => {
     event.preventDefault();
-    console.log(ProductID)
       axios.post(`http://localhost:3000/api/product/editproduct/${ProductID}`, values)
-      .then(res => {
-  
+      .then((res) => {
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -55,8 +58,8 @@ function EditProduct() {
   id="productName"
   name="productName"
   value={values.productName}
-  onChange={e =>
-    setValues(prevValues => ({ ...prevValues, productName: e.target.value }))
+  onChange={(e) =>
+    setValues((prevValues) => ({...prevValues, productName: e.target.value}))
   }
 />
 </div>
@@ -67,7 +70,7 @@ function EditProduct() {
           id="descrip"
           name="descrip"
           value={values.descrip}
-          onChange={e => setValues({ ...values, descrip: e.target.value })}
+          onChange={(e) => setValues({...values, descrip: e.target.value})}
         />
       </div>
       <div>
@@ -77,7 +80,7 @@ function EditProduct() {
           id="photo"
           name="photo"
           value={values.photo}
-          onChange={e => setValues({ ...values, photo: e.target.value })}
+          onChange={(e) => setValues({...values, photo: e.target.value})}
         />
       </div>
       {/* Add similar fields for other data */}
