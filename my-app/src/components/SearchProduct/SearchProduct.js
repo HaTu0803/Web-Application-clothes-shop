@@ -3,21 +3,21 @@ import axios from 'axios';
 import Card from '../Card/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
-import "../NewProduct/NewProduct.css";
+import './SearchProduct.css';
 import { Link, useParams } from 'react-router-dom';
 
 
-const Category = () => {
+const SearchProduct = () => {
     const [sortBy, setSortBy] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage] = useState(20);
     const [selectedPage, setSelectedPage] = useState(1);
     const [products, setProducts] = useState([]);
 
-    const { type } = useParams();
+    const { name } = useParams();
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/categorytype/' + type)
+        axios.get('http://localhost:5000/api/search/' + name)
             .then(res => setProducts(res.data))
             .catch(err => console.log(err));
     }, []);
@@ -25,6 +25,8 @@ const Category = () => {
     const handleSortChange = (event) => {
         setSortBy(event.target.value);
     };
+
+    const productCount = products.length;
 
     const sortedProducts = [...products];
     if (sortBy === 'highest') {
@@ -51,8 +53,8 @@ const Category = () => {
         <>
             <div className="wrapper">
                 <div className="sort">
-                    <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/{type}</p>
-
+                    <p className="info-home-productCount"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/{name}</p>
+                    <div className="productCount" >{productCount === 0 ? (<h1>Không tìm thấy sản phẩm cho "{name}"</h1>) : (<h1>Có {productCount} sản phẩm được tìm thấy cho "{name}"</h1>)} </div>
                     <select id="operators" onChange={handleSortChange} value={sortBy}>
                         <option value=''>Tùy chọn</option>
                         <option value='highest'>Giá cao nhất</option>
@@ -99,4 +101,4 @@ const Category = () => {
     );
 };
 
-export default Category;
+export default SearchProduct;

@@ -5,14 +5,19 @@ import { faHome } from '@fortawesome/free-solid-svg-icons';
 import "./ProductDetails.css";
 import { Link, useParams } from 'react-router-dom';
 import ReactSimplyCarousel from 'react-simply-carousel';
-import { ProductData } from '../../../Helpers/ProductData';
 
-const ProductDetails = () => {
+const Product = () => {
     const [currentValue, setCurrentValue] = useState(1);
     const [selectedSize, setSelectedSize] = useState(""); // Thêm state cho kích thước
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
-    const [data, setProducts] = useState([]);
+    const [products, setProducts] = useState({
+        product1: {},
+        product2: []
+    });
+
+    const product1 = products.product1;
+    const product2 = products.product2;
 
 
     const { id } = useParams();
@@ -21,8 +26,7 @@ const ProductDetails = () => {
         axios.get('http://localhost:5000/api/products/' + id)
             .then(res => setProducts(res.data))
             .catch(err => console.log(err));
-
-    }, [data]);
+    }, []);
 
     const handleSizeClick = (size) => {
         setSelectedSize(size); // Cập nhật kích thước khi người dùng chọn
@@ -42,13 +46,13 @@ const ProductDetails = () => {
         <>
             <div className="product">
                 <div className="sort">
-                    <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/ {data.ProductName}</p>
+                    <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/ {product1 && product1.ProductName}</p>
                 </div>
                 <div className="product-details">
-                    <img className="product-img" src={data.Photo} alt={data.Photo} />
+                    <img className="product-img" src={product1.Photo} alt={product1.Photo} />
                     <div className="product-info">
-                        <h1 className="product-name">{data.ProductName}</h1>
-                        <p className="product-price">{data.Price}</p>
+                        <h1 className="product-name">{product1.ProductName}</h1>
+                        <p className="product-price">{product1.Price}</p>
                         <div className="product-discount">
                             <ul>
                                 <li>Đồng giá Ship toàn quốc 25.000đ</li>
@@ -57,9 +61,9 @@ const ProductDetails = () => {
                                 <li>Đổi trả trong 30 ngày nếu sản phẩm lỗi bất kì</li>
                             </ul>
                         </div>
-                        <div className="product-color">  <h2>Màu sắc: ${data.ColorName}</h2>
+                        <div className="product-color">  <h2>Màu sắc: {/* ProductData[1].color */}</h2>
                             <button className="product-button1">
-                                <img className="product-button1-img" src={data.Photo} alt={data.Photo} />
+                                <a href="" ><img className="product-button1-img" src={product1.Photo} alt={product1.Photo} /></a>
                             </button>
                         </div>
                         <div className="product-size">
@@ -74,7 +78,7 @@ const ProductDetails = () => {
                             <button className={`product-button2 ${selectedSize === 'XL' ? 'selected' : ''}`} onClick={() => handleSizeClick('XL')}>XL</button>
                         </div>
 
-                        <p className="product-description"><h1>Miêu tả sản phẩm :</h1> {data.Descrip}</p>
+                        <p className="product-description"><h1>Miêu tả sản phẩm :</h1> {product1.Descrip}</p>
                         <div className="product-quantity">
                             <h2>Số lượng: </h2>
                             <button className="minus-btn-quantity" onClick={handleDecrease}>-</button>
@@ -141,18 +145,11 @@ const ProductDetails = () => {
                     <h1>Sản phẩm tương tự</h1>
                     <ReactSimplyCarousel
                         activeSlideIndex={activeSlideIndex}
-                        onRequestChange={(requestedIndex) => {
-                            if (requestedIndex < activeSlideIndex) {
-                                setActiveSlideIndex(activeSlideIndex - 1);
-                            } else if (requestedIndex > activeSlideIndex) {
-                                setActiveSlideIndex(activeSlideIndex + 1);
-                            }
-                        }}
-                        itemsToShow={4}  // Display 4 items at a time
+                        onRequestChange={setActiveSlideIndex}
                         itemsToScroll={1}
                         forwardBtnProps={{
-                            //here you can also pass className, or any other button element attributes
                             style: {
+                                alignSelf: 'center',
                                 background: 'black',
                                 border: 'none',
                                 borderRadius: '50%',
@@ -163,15 +160,12 @@ const ProductDetails = () => {
                                 lineHeight: 1,
                                 textAlign: 'center',
                                 width: 30,
-                                position: 'absolute',
-                                right: 0,
-                                top: '50%',
                             },
                             children: <span>{`>`}</span>,
                         }}
                         backwardBtnProps={{
-                            //here you can also pass className, or any other button element attributes
                             style: {
+                                alignSelf: 'center',
                                 background: 'black',
                                 border: 'none',
                                 borderRadius: '50%',
@@ -182,16 +176,12 @@ const ProductDetails = () => {
                                 lineHeight: 1,
                                 textAlign: 'center',
                                 width: 30,
-                                zIndex: 100,
-                                position: 'absolute',
-                                left: 0,
-                                top: '50%',
                             },
                             children: <span>{`<`}</span>,
                         }}
                         responsiveProps={[
                             {
-                                itemsToShow: 4,  // Duy trì số lượng thẻ ở đây
+                                itemsToShow: 6,  // Duy trì số lượng thẻ ở đây
                                 itemsToScroll: 1,
                                 width: 1000,    // Số lớn để hiển thị tất cả thẻ trên một trang
                             },
@@ -199,15 +189,17 @@ const ProductDetails = () => {
                         speed={500}
                         easing="ease-in-out"
                     >
-                        {ProductData.slice(0, 10).map((item, index) => (
-                            <div className="product-same-info">
-                                <img className="product-same-img" src={ProductData[1].img} alt={ProductData[1].img} />
-                                <p className="product-same-name">{ProductData[1].nameProduct}</p>
-                                <p className="product-same-price">{ProductData[1].price}</p>
-                            </div>
-
-                        ))}
-
+                    
+                    {product2.slice(0, 10).map((product, index) => (
+                        <div key={index} className="product-same-item">
+                            {console.log(product.ProductID)}
+                            <Link to={`/product/${product.ProductID}`}>
+                                <img className="product-same-img" src={product.Photo} alt={product.Photo} />
+                                <p className="product-same-name">{product.ProductName}</p>
+                                <p className="product-same-price">{product.Price}</p>
+                            </Link>
+                        </div>
+                    ))}
 
                     </ReactSimplyCarousel>
                 </div>
@@ -217,4 +209,4 @@ const ProductDetails = () => {
     );
 };
 
-export default ProductDetails;
+export default Product;

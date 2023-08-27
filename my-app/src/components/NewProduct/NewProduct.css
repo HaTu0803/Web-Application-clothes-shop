@@ -62,7 +62,8 @@
 
 .pagination button:focus {
   outline: none;
-  background-color: #ee4266;
+  background-color: #333;
+  color: white;
 }
 
 .pagination button:hover {

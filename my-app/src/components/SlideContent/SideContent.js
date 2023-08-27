@@ -1,6 +1,7 @@
 import React from 'react';
 import "./SideContent.css";
 import Collection from "../../Images/collections.png";
+import { Link } from 'react-router-dom';
 
 
 
@@ -18,7 +19,7 @@ const SideContent = () => {
           và biến tấu những trang phục của mình trở thành “một sàn diễn thời trang” thực sự.
         </p>
         <div className = "side-content-detail">
-            <a href="#" className ="collection-detail">Khám Phá Bộ Sưu Tập {'>>'}</a>
+            <Link to = "/producttags" className ="collection-detail">Khám Phá Bộ Sưu Tập {'>>'}</Link>
         </div>
     </div>
 

@@ -10,6 +10,7 @@ import ProductTagsScreen from './screens/ProductTagsScreen';
 import CategoryTypeScreen from './screens/CategoryTypeScreen';
 import CategoryScreen from './screens/CategoryScreen';
 import ProductTagTypeScreen from './screens/ProductTagTypeScreen';
+import SearchProductScreen from './screens/SearchProductScreen';
 import {
   BrowserRouter as Router,
   Routes,
@@ -32,6 +33,7 @@ function App() {
         <Route path="/category/:type" element={<CategoryTypeScreen />} />
         <Route path="/categorytype/:type" element={<CategoryScreen />} />
         <Route path="/producttag/:type" element={<ProductTagTypeScreen />} />
+        <Route path="/search/:name" element={<SearchProductScreen />} />
       </Routes>
     </Router>
   )

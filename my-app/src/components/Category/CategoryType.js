@@ -24,7 +24,7 @@ const CategoryType = () => {
 
     const handleSortChange = (event) => {
         setSortBy(event.target.value);
-      };
+    };
 
     const sortedProducts = [...products];
     if (sortBy === 'highest') {
@@ -54,6 +54,7 @@ const CategoryType = () => {
                     <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/{type}</p>
 
                     <select id="operators" onChange={handleSortChange} value={sortBy}>
+                        <option value=''>Tùy chọn</option>
                         <option value='highest'>Giá cao nhất</option>
                         <option value='lowest'>Giá thấp nhất</option>
                     </select>
@@ -64,7 +65,8 @@ const CategoryType = () => {
                                 key={number}
                                 onClick={() => paginate(number)}
                                 style={{
-                                    backgroundColor: selectedPage === number ? '#ee4266' : '#eee',
+                                    backgroundColor: selectedPage === number ? '#333' : 'white',
+                                    color: selectedPage === number ? 'white' : '#333',
                                 }}
                             >
                                 {number}
@@ -84,7 +86,8 @@ const CategoryType = () => {
                             key={number}
                             onClick={() => paginate(number)}
                             style={{
-                                backgroundColor: selectedPage === number ? '#ee4266' : '#eee',
+                                backgroundColor: selectedPage === number ? '#333' : 'white',
+                                color: selectedPage === number ? 'white' : '#333',
                             }}
                         >
                             {number}

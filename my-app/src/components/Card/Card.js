@@ -64,7 +64,7 @@ const Card = (props) => {
           </span>
           <span href="#" className="action tooltip" onClick={handleIconClick}>
             <FontAwesomeIcon icon={faExpand} />
-            <span className="tooltiptext">Xem Chi Tiết</span>
+            <span className="tooltiptext">Xem nhanh</span>
           </span>
         </div>
         <h3>{props.nameProduct}</h3>

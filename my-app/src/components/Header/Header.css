@@ -217,3 +217,38 @@ h5 {
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
+
+.search-results {
+  flex-direction: row;
+  justify-content: space-between; 
+  align-items: center;
+  width: auto;
+  height: auto;
+  font-size: 2rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff7f4;
+  margin-top: 50px; 
+  z-index: 100;
+}
+
+
+.search-results .results-img {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+}
+
+.search-results .results {
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.search-results .results-name{
+  font-size: 16px;
+  font-family:Arial, Helvetica, sans-serif;
+  color: black;
+  text-align: center;
+  margin-bottom: 10px;
+}

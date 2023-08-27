@@ -1,18 +1,54 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { Link as ScrollLink } from 'react-scroll';
 import "./Header.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logo from "../../Images/logo.png";
 import { faSearch, faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { useCartContext } from '../../screens/CartContext';
+import Card from '../Card/Card';
+
 
 const Body = () => {
-    const { cartItems  } = useCartContext();
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+    const [result, setResult] = useState(null);
+    const { cartItems } = useCartContext();
+
     const handleSearch = () => {
         const searchInput = document.querySelector('.header');
         searchInput.classList.toggle('active');
+    };
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            window.location.href = `/search/${searchTerm}`;
+        }
+    };
+
+    const handleSearchResults = () => {
+        setResult({
+            Photo: searchResults.Photo,
+            ProductName: searchResults.ProductName,
+            Price: searchResults.Price
+        });
     }
+
+    const handleCloseSearch = (event) => {
+        event.stopPropagation();
+        setResult(null);
+    };
+
+    useEffect(() => {
+        if (searchTerm.trim() !== '') {
+            axios.get('http://localhost:5000/api/search/' + searchTerm)
+                .then(res => setSearchResults(res.data))
+                .catch(err => console.log(err));
+        } else {
+            setSearchResults([]);
+        }
+    }, [searchTerm]);
 
     return (
         <div className="container">
@@ -79,7 +115,26 @@ const Body = () => {
                     </ul>
                 </nav>
                 <nav className="menu-right">
-                    <input type="text" className="search-input mainLoginInput" name="search" placeholder="Tìm Kiếm..." />
+                    <input type="text" className="search-input mainLoginInput" name="search" value={searchTerm}
+                        onChange={(event) => {
+                            setSearchTerm(event.target.value)
+                            handleSearchResults()
+                        }}
+                        onKeyDown={handleKeyPress}
+                        placeholder="Tìm Kiếm..."
+                    />
+                    <div id="searchResults" className="search-results" style={{ display: result ? 'flex' : 'none' }} onClick={handleCloseSearch}
+
+                    >
+                        {searchResults.slice(0, 3).map((result) => (
+                            <div className="results">
+                                <Link to={`/products/${result.ProductID}`}>
+                                    <img src={result.Photo} alt={result.Photo} className="results-img"style={{ display: result ? 'flex' : 'none' }} />
+                                </Link>
+                                <Link to={`/products/${result.ProductID}`}><div className="results-name">{result.ProductName}</div></Link>
+                            </div>
+                        ))}
+                    </div>
                     <span className="menu-text menu-icon" onClick={handleSearch}><FontAwesomeIcon icon={faSearch} /></span>
                     <Link className="menu-text menu-icon"><FontAwesomeIcon icon={faUser} /></Link>
                     <Link to="/cart" className="menu-text menu-icon icon-shopping">
