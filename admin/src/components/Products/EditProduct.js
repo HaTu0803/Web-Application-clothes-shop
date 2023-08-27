@@ -31,9 +31,9 @@ function EditProduct() {
         if (productData) {
           setValues((prevValues) => ({
             ...prevValues,
-            productName: productData.productName || '',
-            descrip: productData.descrip || '',
-            photo: productData.photo || '',
+            productName: productData.ProductName || '',
+            descrip: productData.Descrip || '',
+            photo: productData.Photo || '',
           }));
         }
       })
@@ -57,7 +57,7 @@ function EditProduct() {
   type="text"
   id="productName"
   name="productName"
-  value={values.productName}
+  value={values.productName || ''}
   onChange={(e) =>
     setValues((prevValues) => ({...prevValues, productName: e.target.value}))
   }
@@ -69,7 +69,7 @@ function EditProduct() {
           type="text"
           id="descrip"
           name="descrip"
-          value={values.descrip}
+          value={values.descrip || ''}
           onChange={(e) => setValues({...values, descrip: e.target.value})}
         />
       </div>
@@ -79,7 +79,7 @@ function EditProduct() {
           type="text"
           id="photo"
           name="photo"
-          value={values.photo}
+          value={values.photo || ''}
           onChange={(e) => setValues({...values, photo: e.target.value})}
         />
       </div>
