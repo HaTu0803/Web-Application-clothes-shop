@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600&display=swap');
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #A76F6F;
+  font-family: 'Quicksand', sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 100px;
+  height: 60px;
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 20px;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: #fff7f4;
+  margin: 0 auto;
+  box-shadow: 0 1px 10px rgba(95, 111, 149, 0.65);
+}
+
+
+.main-menu {}
+
+.menu-right {}
+
+.menu-right .search-input {
+  display: none;
+  width: 30%;
+  border: 1px solid black;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.header.active {
+  display: flex;
+}
+
+.header.active .main-menu {
+  display: none;
+}
+
+.header.active .menu-right .search-input {
+  display: block;
+}
+
+.menu-text {
+  color: #191312;
+  font-size: 2rem;
+}
+
+.menu-text:hover {
+  border-top: 1px solid darkcyan;
+  border-bottom: 1px solid brown;
+  color: darkcyan;
+}
+
+.menu-icon {
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.menu-icon:hover {
+  color: darkcyan;
+  border: none;
+}
+
+
+.header li {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  margin-left: 60px;
+}
+
+
+
+
+::placeholder {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 1000px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: grid;
+  grid-template-areas: 'Type1 Type2 Type3 Type4';
+}
+
+li.Type {
+  display: block;
+  padding-left: 0px;
+  margin-left: 0;
+  font-size: 15px;
+
+}
+
+ul.Product {
+  padding-left: 0;
+}
+
+h5 {
+  padding-left: 10px;
+  margin: 0;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 1000px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-collection a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-collection a:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-col:hover .dropdown-collection {
+  display: grid;
+  grid-template-areas: 'Type1 Type2 Type3 Type4';
+}
+
+.dropdown-collection {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 720px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.icon-shopping {
+  position: relative;
+}
+
+.quantity-items {
+  background: red;
+  border-radius: 1em;
+  color: #fff;
+  display: block;
+  font-size: 11px;
+  height: 1.273em;
+  line-height: 1;
+  min-width: 1.273em;
+  padding: 0.2em;
+  position: absolute;
+  right: -0.7em;
+  text-align: center;
+  top: -0.5em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
