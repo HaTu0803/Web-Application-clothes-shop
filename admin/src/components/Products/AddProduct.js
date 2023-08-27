@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import "../../css/Addproduct.css";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ProductController from "../Controller/ProductController";
 
 const AddProduct = () => {
   const [product, setProduct] = useState({
@@ -82,6 +83,8 @@ const AddProduct = () => {
 
     })
     .catch(err => console.log(err));
+
+    const result = ProductController.addProduct(combinedData);
 };
 
   useEffect(()=>{
