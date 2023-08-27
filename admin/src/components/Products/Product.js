@@ -103,7 +103,7 @@ function Product() {
             </select>
           </div> */}
         </div>
-        <div class='create'>
+        <div className='create'>
             <Link to='/addproducts'>CREATE +</Link>
         </div>
       </div>

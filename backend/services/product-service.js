@@ -22,7 +22,7 @@ var config = {
 export default {
     async AllProducts() {
         let pool = await sql.connect(config)
-        let result1 = await pool.request().query('SELECT p.ProductID,p.ProductName,p.Descrip,p.Photo,p.CategoryID,p.SellerID,pd.SizeID,pd.ColorID,pd.Quantity,pd.Price FROM products p INNER JOIN productdetails pd ON p.ProductID = pd.ProductID')
+        let result1 = await pool.request().query('SELECT distinct p.ProductID,p.ProductName,p.Photo,p.CategoryID, pd.Quantity,pd.Price FROM products p INNER JOIN productdetails pd ON p.ProductID = pd.ProductID')
         // let result1 = await pool.request().query('SELECT * FROM products')
         return result1
 
