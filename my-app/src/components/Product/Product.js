@@ -11,13 +11,7 @@ const Product = () => {
     const [selectedSize, setSelectedSize] = useState(""); // Thêm state cho kích thước
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
-    const [products, setProducts] = useState({
-        product1: {},
-        product2: {}
-    });
-
-    const product1 = products.product1;
-    const product2 = products.product2;
+    const [data, setProducts] = useState([]);
 
 
     const { id } = useParams();
@@ -46,13 +40,13 @@ const Product = () => {
         <>
             <div className="product">
                 <div className="sort">
-                    <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/ {product1 && product1.ProductName}</p>
+                    <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/ {data && data.ProductName}</p>
                 </div>
                 <div className="product-details">
-                    <img className="product-img" src={product1.Photo} alt={product1.Photo} />
+                    <img className="product-img" src={data.Photo} alt={data.Photo} />
                     <div className="product-info">
-                        <h1 className="product-name">{product1.ProductName}</h1>
-                        <p className="product-price">{product1.Price}</p>
+                        <h1 className="product-name">{data.ProductName}</h1>
+                        <p className="product-price">{data.Price}</p>
                         <div className="product-discount">
                             <ul>
                                 <li>Đồng giá Ship toàn quốc 25.000đ</li>
@@ -63,7 +57,7 @@ const Product = () => {
                         </div>
                         <div className="product-color">  <h2>Màu sắc: {/* ProductData[1].color */}</h2>
                             <button className="product-button1">
-                                <a href="" ><img className="product-button1-img" src={product1.Photo} alt={product1.Photo} /></a>
+                                <a href="" ><img className="product-button1-img" src={data.Photo} alt={data.Photo} /></a>
                             </button>
                         </div>
                         <div className="product-size">
@@ -78,7 +72,7 @@ const Product = () => {
                             <button className={`product-button2 ${selectedSize === 'XL' ? 'selected' : ''}`} onClick={() => handleSizeClick('XL')}>XL</button>
                         </div>
 
-                        <p className="product-description"><h1>Miêu tả sản phẩm :</h1> {product1.Descrip}</p>
+                        <p className="product-description"><h1>Miêu tả sản phẩm :</h1> {data.Descrip}</p>
                         <div className="product-quantity">
                             <h2>Số lượng: </h2>
                             <button className="minus-btn-quantity" onClick={handleDecrease}>-</button>
@@ -189,16 +183,7 @@ const Product = () => {
                         speed={500}
                         easing="ease-in-out"
                     >
-                    
-                    {product2.map((product, index) => (
-                        <div key={index} className="product-same-item">
-                            <Link to={`/product/${product.ProductID}`}>
-                                <img className="product-same-img" src={product.Photo} alt={product.Photo} />
-                                <p className="product-same-name">{product.ProductName}</p>
-                                <p className="product-same-price">{product.Price}</p>
-                            </Link>
-                        </div>
-                    ))}
+                        
 
                     </ReactSimplyCarousel>
                 </div>

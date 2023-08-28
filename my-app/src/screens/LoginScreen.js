@@ -1,20 +1,17 @@
 import React from 'react';
 import Header from '../components/Header';
-import SearchProduct from '../components/SearchProduct/SearchProduct';
 import Footer from '../components/Footer';
+import Login from '../components/Login/Login';
 
-
-
-
-const SearchProductScreen = () => {
+const LoginScreen = () => {
     return (
         <>
             <Header />
             <div className = "wrapper">
-                <SearchProduct />
+                <Login />
             </div>
             <Footer />
         </>
     )
     }   
-export default SearchProductScreen;
+export default LoginScreen;

@@ -1,14 +1,11 @@
 .wrapper {
-  position: relative;
-  top: 75px;
+  margin-top: 80px;
   width: 100%;
-  height: auto;
   background-color: #fff7f4;
 }
 
 .sort {
-  position: relative;
-  top: 50px;
+  margin-top: 50px;
 }
 
 .info-home {
@@ -35,8 +32,6 @@
 
 
 .row {
-  position: relative;
-  top: 100px;
   width: 100%;
   height: 100%;
 }
@@ -62,8 +57,7 @@
 
 .pagination button:focus {
   outline: none;
-  background-color: #333;
-  color: white;
+  background-color: #ee4266;
 }
 
 .pagination button:hover {
@@ -101,13 +95,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
-}
-
-.card{
-  position: relative;
-  width: 20%;
-  height: auto;
-  background-color: #fff7f4;
 }
 
 footer {

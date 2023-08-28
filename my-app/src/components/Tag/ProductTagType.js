@@ -24,7 +24,7 @@ const ProductTagType = () => {
 
     const handleSortChange = (event) => {
         setSortBy(event.target.value);
-    };
+      };
 
     const sortedProducts = [...products];
     if (sortBy === 'highest') {
@@ -54,7 +54,6 @@ const ProductTagType = () => {
                     <p className="info-home"><Link to="/"><FontAwesomeIcon className='icon-home' icon={faHome} /></Link>/{type}</p>
 
                     <select id="operators" onChange={handleSortChange} value={sortBy}>
-                        <option value=''>Tùy chọn</option>
                         <option value='highest'>Giá cao nhất</option>
                         <option value='lowest'>Giá thấp nhất</option>
                     </select>

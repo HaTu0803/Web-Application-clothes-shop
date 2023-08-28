@@ -1,0 +1,102 @@
+
+.BarChart1
+{
+    position: relative;
+    margin-top: 100px;
+    margin-left: 300px;
+    display: inline-block;
+    background-color: white;
+    width: 500px;
+    border-radius: 10px;
+    border: 1px solid #E7E7E7;
+
+    
+}
+
+
+.BarChart2
+{
+    
+    position: absolute;
+    display: inline-block;
+    margin-top: 100px;
+    margin-left: 100px;
+    background-color: white;
+    width: 500px;
+    border-radius: 10px;
+    border: 1px solid #E7E7E7;
+}
+
+
+.BarChart3
+{
+    position: relative;
+    margin-top: 50px;
+    margin-left: 300px;
+    background-color: white;
+    width: 1100px;
+    border-radius: 10px;
+    border: 1px solid #E7E7E7;
+}
+
+.Chart-title
+
+{
+    background-color: #E7E7E7;
+    height: 50px;
+    border-radius: 5px;
+}
+
+
+
+.Chart-content {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.yearly-card {
+    width: 33%;
+    margin-top: 70px;
+    margin-left: 300px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .yearly-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-header {
+    background-color: orange;
+    color: #ffffff;
+    border-radius: 10px 10px 0 0;
+    padding: 10px 0;
+  }
+  
+  .card-header h2 {
+    margin: 0;
+  }
+  
+  .card-content {
+    margin-top: 15px;
+  }
+  
+  .revenue {
+    font-size: 28px;
+    font-weight: bold;
+    color: orange;
+  }
+  
+
+

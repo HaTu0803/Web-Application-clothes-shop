@@ -20,7 +20,9 @@ const Card = (props) => {
   };
 
   const handleClosePopup = (event) => {
-    event.stopPropagation();
+    if (event) {
+      event.stopPropagation();
+    }
     setCard(null);
   };
 
@@ -42,21 +44,23 @@ const Card = (props) => {
   };
 
   const { addToCart } = useCartContext();
-  const handleAddProduct = () => {
+  const handleAddProduct = (currentValue) => {
     const product = {
       id: props.id,
       name: props.nameProduct,
       price: props.price,
       image: props.image,
-      quantity: 1
+      size: props.size,
+      quantity: currentValue
     };
-    addToCart(product);
+    
+    addToCart(product, currentValue);
   };
 
   return (
     <div className="card">
       <div className="card-body">
-        <Link to={`/products/${props.id}`} ><img src={props.image} className="img1" alt="Product" /></Link>
+        <Link to={`/user/products/${props.id}`} ><img src={props.image} className="img1" alt="Product" /></Link>
         <div className="action-product">
           <span href="#" className="action tooltip">
             <FontAwesomeIcon icon={faHeart} />
@@ -64,13 +68,14 @@ const Card = (props) => {
           </span>
           <span href="#" className="action tooltip" onClick={handleIconClick}>
             <FontAwesomeIcon icon={faExpand} />
-            <span className="tooltiptext">Xem nhanh</span>
+            <span className="tooltiptext">Xem Chi Tiết</span>
           </span>
         </div>
         <h3>{props.nameProduct}</h3>
         <span className="btn btn-order" onClick={handleAddProduct}>
           <FontAwesomeIcon className="icon-shopping-bag" icon={faShoppingBag} />
-          <span>{props.price}</span></span>
+          <span>{props.price}</span>
+        </span>
       </div>
       {card && (
         <div className="popup-card"
@@ -83,11 +88,11 @@ const Card = (props) => {
               <div className="popup-info">
                 <h1 className="popup-name">{card.name}</h1>
                 <span className="popup-price">{card.price}</span>
-                <div className="popup-color" >
+                {/* <div className="popup-color" >
                   <button className="popup-button1"></button>
                   <button className="popup-button2"></button>
                   <button className="popup-button3"></button>
-                </div>
+                </div> */}
                 <div className="popup-quantity">
                   <div className="popup-quantity-par">
                     <button className="minus-btn" onClick={handleDecrease}>-</button>
@@ -98,7 +103,10 @@ const Card = (props) => {
                     <span>Còn hàng</span>
                   </div>
                 </div>
-                <button className="popup-add">Thêm vào giỏ hàng</button>
+                <button className="popup-add" onClick={() => {
+                  handleAddProduct(currentValue);
+                  handleClosePopup();
+                }}>Thêm vào giỏ hàng</button>
                 <form className="popup-form">
                   <fieldset>
                     <legend className="dotted-border">&#127873; Khuyến mãi - ưu đãi</legend>

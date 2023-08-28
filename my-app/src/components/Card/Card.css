@@ -1,5 +1,6 @@
 .wrapper-newProduct {
-  width: 95%;
+  width: 100%;
+  padding: 20px 30px;
   margin: 0 auto;
 }
 
@@ -15,40 +16,53 @@
   margin-bottom: 50px;
   transition: 0.3s;
   border-radius: 15px;
-  margin: 30px;
+  margin: 20px;
+  flex-basis: 20%;
 }
 
 
 .card-body {
   padding: 30px 20px;
   text-align: center;
-  font-size: 18px;
-  position: relative;
+  font-size: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.card-body h3{
+  margin-bottom: 20px;
+}
+
+
 .card-body .btn {
-  display: block;
   color: #fff;
   text-align: center;
-  background: linear-gradient(to right, #232222, #050404);
-  margin-top: 30px;
+  background: #85270b;
+  margin-top: auto;
   text-decoration: none;
   padding: 10px 5px;
   border-radius: 15px;
+
 }
 
-.card-body .btn-order:hover{
-  background: #000000;
-  
+.card-body .btn-order:hover {
+  background: #a82700;
+
 }
+
 .btn-order:hover::before {
   content: "Thêm vào giỏ hàng";
 }
-.icon-shopping-bag{
+
+.icon-shopping-bag {
   margin: 0 8px;
 }
+
 .btn-order:hover span {
-  display: none; /* Ẩn văn bản gốc */
+  display: none;
+  /* Ẩn văn bản gốc */
 }
 
 .card-detail .btn {
@@ -70,7 +84,7 @@
   background: linear-gradient(to right, #111010, #000000);
 }
 
-.img1:hover{
+.img1:hover {
   transform: scale(1.05);
 }
 
@@ -99,7 +113,6 @@
   position: absolute;
   top: 5rem;
   right: 40px;
-  z-index: 10;
   display: flex;
   flex-direction: column;
   opacity: 0;
@@ -109,14 +122,14 @@
   opacity: 1;
 }
 
-.action-product span{
+.action-product span {
   cursor: pointer;
 }
 
 .tooltip {
   position: relative;
   display: inline-block;
-  z-index: 10;
+  z-index: 1;
 }
 
 .tooltip .tooltiptext {
@@ -183,19 +196,19 @@
   background: #fff;
   position: absolute;
   width: 90%;
-  height: 500px;
+  height: 600px;
   margin: 20px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   overflow-y: scroll;
+  border-radius: 20px;
+  padding: 20px;
 }
 
 .card .popup-card .popup-content .popup-body {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-
 }
 
 .card .popup-card .popup-content .popup-body .popup-img {
@@ -330,7 +343,7 @@
 }
 
 .popup-add {
-  margin-top: 20px;
+  margin-top: 32px;
   padding: 10px 20px;
   font-size: 20px;
   font-weight: bold;
@@ -370,3 +383,22 @@
   font-weight: bold;
   color: #f02757;
 }
+
+
+
+
+
+
+
+
+/* .card .popup-card span {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  z-index: 1000;
+  font-size: 50px;
+  font-weight: bolder;
+  cursor: pointer;
+  color: #fff;
+  user-select: none;
+} */

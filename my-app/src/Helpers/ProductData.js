@@ -5,6 +5,66 @@ import trenchCoat4 from "../Images/trenchCoat4.jpg";
 
 export const ProductData = [
     {
+        id: 'PRO_54',
+        img: trenchCoat1,
+        nameProduct: "Áo khoác nữ màu be",
+        price: "500.000 VNĐ"
+    },
+
+    {
+        id: 'PRO_37',
+        img: trenchCoat2,
+        nameProduct: "Áo khoác nữ màu trắng ",
+        price: "800.000 VNĐ"
+
+    },
+    {
+        id: 'PRO_54',
+        img: trenchCoat1,
+        nameProduct: "Áo khoác nữ màu be",
+        price: "500.000 VNĐ"
+    },
+
+    {
+        id: 'PRO_37',
+        img: trenchCoat2,
+        nameProduct: "Áo khoác nữ màu trắng ",
+        price: "800.000 VNĐ"
+
+    },
+    {
+        id: 'PRO_54',
+        img: trenchCoat1,
+        nameProduct: "Áo khoác nữ màu be",
+        price: "500.000 VNĐ"
+    },
+
+    {
+        id: 'PRO_37',
+        img: trenchCoat2,
+        nameProduct: "Áo khoác nữ màu trắng ",
+        price: "800.000 VNĐ"
+
+    },
+    {
+        id: 'PRO_54',
+        img: trenchCoat1,
+        nameProduct: "Áo khoác nữ màu be",
+        price: "500.000 VNĐ"
+    },
+
+    {
+        id: 'PRO_37',
+        img: trenchCoat2,
+        nameProduct: "Áo khoác nữ màu trắng ",
+        price: "800.000 VNĐ"
+
+    },
+
+];
+
+export const ProductDetailData = [
+    {
         id: 1,
         img: trenchCoat1,
         nameProduct: "Áo khoác nữ màu be",
@@ -181,4 +241,3 @@ export const ProductData = [
         price: "400.000 VNĐ"
     },
 ];
-

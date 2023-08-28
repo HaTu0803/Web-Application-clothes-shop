@@ -7,7 +7,7 @@ const CardDetail = () => {
     return (
          <div className = "new-product">
              <div className = "card-detail">
-                <Link to="/newproducts" className="btn">XEM THÊM</Link>
+                <Link to="/user/newproducts" className="btn">XEM THÊM</Link>
             </div>
         </div>
     );
