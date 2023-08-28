@@ -5,6 +5,7 @@
 // import logger from 'morgan';
 import express from 'express';
 import productRoutes from './routes/product-route.js';
+import paymentRoutes from './routes/payment-routes.js';
 
 var app = express();
 app.set('view engine', 'ejs');
@@ -18,8 +19,7 @@ app.use(function(req, res, next) {
 
 app.use('/api', productRoutes); 
 
-
-// ... (error handling middleware)
+app.use('/payment', paymentRoutes); 
 
 const PORT = 5000;
 app.listen(PORT, function () {
