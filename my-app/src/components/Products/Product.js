@@ -4,7 +4,7 @@ import {EditOutlined, DeleteOutlined, ReadOutlined} from '@ant-design/icons';
 import '../../css/Product.css';
 import {Link} from 'react-router-dom';
 import ProductController from '../Controller/ProductController';
-import {Pagination} from 'antd';
+
 
 // import EditProduct from './EditProduct';
 // import {useParams} from 'react-router-dom';
